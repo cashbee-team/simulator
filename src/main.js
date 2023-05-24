@@ -25,9 +25,12 @@ Alpine.store('inputs', {
   secondProductSelector: false,
   secondProduct: null,
 
-  toggleCompare() {
-    this.secondProductSelector = !this.secondProductSelector;
-    if (!this.secondProductSelector && this.secondProduct) {
+  secondSelectorOpened() {
+    this.secondProductSelector = true;
+  },
+  secondSelectorClosed() {
+    this.secondProductSelector = false;
+    if (this.secondProduct) {
       this.secondProduct = null;
       this.secondBest = null;
       this.secondWorst = null;

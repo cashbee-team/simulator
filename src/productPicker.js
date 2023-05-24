@@ -9,14 +9,17 @@ import Alpine from 'alpinejs';
 
 // If setting value on inputs is not possible on webflow, an option would be
 // to pass $el as param here and iterate through labels and set value attr on each input
-Alpine.data('productPicker', (defaultProduct, destination, initiallyShown = true) => ({
+Alpine.data('productPicker', (defaultProduct, destination, defaultOpen = true) => ({
   init() {
     Alpine.effect(() => {
-      if (!this.product || !initiallyShown) return;
+      if (!this.product || !this.open) return;
       Alpine.store('inputs')[`${destination}Product`] = this.product;
       Alpine.store('inputs')[`${destination}RiskLevel`] = this.piloteRiskLevel;
     });
-  }, product: defaultProduct, piloteRiskLevel: 'risk3',
+  },
+  open: defaultOpen,
+  product: defaultProduct,
+  piloteRiskLevel: 'risk3',
 
   clickDefault($el) {
     $($el).find(`.simulator--product-item, .simulator--risk-picker-item`).each(function() {
@@ -32,10 +35,13 @@ Alpine.data('productPicker', (defaultProduct, destination, initiallyShown = true
         $($el).find(`.simulator--risk-picker input[value="${this.piloteRiskLevel}"]`).click();
       });
     }
-    $el.addEventListener('shown', () => {
-      if (!this.product) return;
+  },
+
+  toggleOpen() {
+    this.open = !this.open;
+    if (this.open) {
       Alpine.store('inputs')[`${destination}Product`] = this.product;
       Alpine.store('inputs')[`${destination}RiskLevel`] = this.piloteRiskLevel;
-    });
-  },
+    }
+  }
 }));
