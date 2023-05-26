@@ -42,6 +42,11 @@ Alpine.data('productPicker', (defaultProduct, destination, defaultOpen = true) =
     if (this.open) {
       Alpine.store('inputs')[`${destination}Product`] = this.product;
       Alpine.store('inputs')[`${destination}RiskLevel`] = this.piloteRiskLevel;
+      Alpine.store('inputs').secondSelectorOpened();
+    } else {
+      Alpine.store('inputs').secondSelectorClosed();
+      Alpine.store('inputs')[`${destination}Product`] = null;
+      Alpine.store('inputs')[`${destination}RiskLevel`] = null;
     }
   }
 }));
