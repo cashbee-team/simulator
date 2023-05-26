@@ -1,3 +1,33 @@
 [x-cloak] {
     display: none !important;
 }
+
+.simulator--radio-button-html {
+    border: none !important;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.simulator--product-picker-item-icon, .simulator--product-picker-item-label {
+    z-index: 10;
+    pointer-events: none;
+}
+
+.simulator--product-item-v2 input:checked::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-color: #fff;
+    border: 0 rgba(56, 152, 236, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
