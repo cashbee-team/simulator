@@ -7,7 +7,7 @@
 
 import Alpine from 'alpinejs';
 import { BarController, BarElement, CategoryScale, Chart, Colors as ChartColors, LinearScale } from 'chart.js';
-import { BackgroundColors, Colors, DefaultColor } from './colors.js';
+import { DefaultColor } from './colors.js';
 import { DEFAULT_MAIN_PRODUCT } from './constants.js';
 
 Chart.register(ChartColors, BarController, BarElement, LinearScale, CategoryScale);
@@ -22,7 +22,7 @@ const chart = new Chart(canvas, {
         data: [0, 0],
         barThickness: 30,
         backgroundColor: [
-          Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
+          window.Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
           '#a8a8b2',
         ],
       },
@@ -30,7 +30,7 @@ const chart = new Chart(canvas, {
         data: [0, undefined],
         barThickness: 30,
         backgroundColor: [
-          Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
+          window.Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
           '#a8a8b2',
         ],
       },
@@ -64,8 +64,8 @@ Alpine.store('chart', {
   },
   setBar(index, kind, best, worst) {
     chart.data.labels[index] = kind;
-    chart.data.datasets[0].backgroundColor[index] = BackgroundColors[kind] || DefaultColor;
-    chart.data.datasets[1].backgroundColor[index] = Colors[kind] || DefaultColor;
+    chart.data.datasets[0].backgroundColor[index] = window.BackgroundColors[kind] || DefaultColor;
+    chart.data.datasets[1].backgroundColor[index] = window.Colors[kind] || DefaultColor;
     if (worst) {
       chart.data.datasets[1].data[index] = best;
     } else {
