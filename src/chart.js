@@ -21,6 +21,8 @@ const chart = new Chart(canvas, {
       {
         data: [0, 0],
         barThickness: 30,
+        borderRadius: 10,
+        borderSkipped: 'middle',
         backgroundColor: [
           window.Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
           '#a8a8b2',
@@ -29,6 +31,8 @@ const chart = new Chart(canvas, {
       {
         data: [0, undefined],
         barThickness: 30,
+        borderRadius: 10,
+        borderSkipped: 'middle',
         backgroundColor: [
           window.Colors[DEFAULT_MAIN_PRODUCT] || DefaultColor,
           '#a8a8b2',
@@ -49,6 +53,9 @@ const chart = new Chart(canvas, {
         grid: { display: false },
         beginAtZero: true,
         stacked: true,
+        // afterFit: function(scaleInstance) {
+        //   scaleInstance.width = 100;
+        // }
       },
     },
     plugins: {
@@ -59,8 +66,8 @@ const chart = new Chart(canvas, {
 
 Alpine.store('chart', {
   setBase(base) {
-    chart.data.datasets[0].data[chart.data.datasets[0].data.length - 1] = base;
-    chart.data.datasets[1].data[chart.data.datasets[0].data.length - 1] = undefined;
+    chart.data.datasets[0].data[chart.data.datasets[0].data.length - 1] = base / 2;
+    chart.data.datasets[1].data[chart.data.datasets[0].data.length - 1] = base / 2;
   },
   setBar(index, kind, best, worst) {
     chart.data.labels[index] = kind;
@@ -68,20 +75,21 @@ Alpine.store('chart', {
     chart.data.datasets[1].backgroundColor[index] = window.Colors[kind] || DefaultColor;
     if (worst) {
       chart.data.datasets[1].data[index] = best;
+      chart.data.datasets[0].data[index] = worst;
     } else {
-      chart.data.datasets[0].data[index] = best;
-      chart.data.datasets[1].data[index] = best;
+      chart.data.datasets[0].backgroundColor[index] = window.Colors[kind] || DefaultColor;
+      chart.data.datasets[0].data[index] = best / 2;
+      chart.data.datasets[1].data[index] = best / 2;
     }
-    chart.data.datasets[0].data[index] = worst;
     console.log(chart.data.datasets);
     chart.update();
   },
   setMain(kind, best, worst) {
-    this.setBar(0, kind, best, worst)
+    this.setBar(0, kind, best, worst);
   },
   setSecond(kind, best, worst) {
     if (chart.data.datasets[0].data.length < 3) this.insertSecond();
-    this.setBar(1, kind, best, worst)
+    this.setBar(1, kind, best, worst);
   },
   insertSecond() {
     chart.data.labels.splice(1, 0, '');
