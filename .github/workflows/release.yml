@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      major-version:
+        description: 'Release version, keep auto for minor version upgrade. Or a custom version, e.g. `3.0.0` for major version upgrade'
+        default: 'auto'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      - name: Create release & Upload asset
+        run: |
+          git fetch --tags
+          git fetch --no-tags origin main
+          if [ '${{ github.event.inputs.major-version }}' = 'auto' ]
+          then
+            VERSION=`git describe --match "[0-9]*.[0-9]*.[0-9]*" --abbrev=0 --tags origin/main || echo "1.0.0"`
+            VERSION_BITS=(${VERSION//./ })
+            VNUM1=${VERSION_BITS[0]}
+            VNUM2=$((VERSION_BITS[1]+1))
+            VNUM3=0
+            VERSION="$VNUM1.$VNUM2.$VNUM3"
+          else
+            VERSION="${{ github.event.inputs.major-version }}"
+          fi
+          ASSET=`ls dist/assets | grep -o 'dist/assets/index-.*\.js'`
+          
+          gh release create --generate-notes $VERSION $ASSET#index.js
