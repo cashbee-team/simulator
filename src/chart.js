@@ -82,7 +82,6 @@ Alpine.store('chart', {
       chart.data.datasets[0].data[index] = best / 2;
       chart.data.datasets[1].data[index] = best / 2;
     }
-    console.log(chart.data.datasets);
     chart.update();
   },
   setMain(kind, best, worst) {
