@@ -40,12 +40,11 @@ Alpine.store('inputs', {
   setOutputs() {
     this.setMainOutputs();
     if (this.secondProduct) this.setSecondOutputs();
-    // document.getElementById('secondResultBestField').value = this.secondBest;
-    // document.getElementById('secondResultWorstField').value = this.secondWorst;
     document.getElementById('initialAmountField').value = this.initialAmount;
     document.getElementById('monthlyAmountField').value = this.monthlyAmount;
     document.getElementById('durationField').value = this.duration;
     document.getElementById('productField').value = this.mainProduct;
+    document.getElementById('outputCalendly').value = `Je souhaite investir initialement ${this.initialAmount}€, puis chaque mois ${this.monthlyAmount}€, pendant ${this.duration} ans sur le placement ${this.mainProduct}`;
   },
   setMainOutputs() {
     const [base, mainBest, mainWorst] = this.computeEstimate(this.mainProduct, this.mainRiskLevel);
@@ -62,9 +61,9 @@ Alpine.store('inputs', {
     Alpine.store('chart').setMain(this.mainProduct, mainBest, mainWorst);
 
     // form
-    document.getElementById('resultBaseField').value = this.base;
-    document.getElementById('resultBestField').value = this.mainBest.value;
-    document.getElementById('resultWorstField').value = this.mainWorst ? this.mainWorst.value : 0;
+    document.getElementById('resultBaseField').value = Math.round(this.base);
+    document.getElementById('resultBestField').value = Math.round(this.mainBest.value);
+    document.getElementById('resultWorstField').value = this.mainWorst ? Math.round(this.mainWorst.value) : 0;
   },
   setSecondOutputs() {
     const [base, secondBest, secondWorst] = this.computeEstimate(this.secondProduct, this.secondRiskLevel);
