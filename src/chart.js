@@ -41,6 +41,7 @@ const chart = new Chart(canvas, {
     ],
   },
   options: {
+    maintainAspectRatio: false,
     hover: { mode: null },
     indexAxis: 'y',
     scales: {
