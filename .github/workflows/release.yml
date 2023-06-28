@@ -32,6 +32,7 @@ jobs:
           if [ -z '${{ github.event.inputs.major-version }}' ] || [ '${{ github.event.inputs.major-version }}' = 'auto' ]
           then
             VERSION=`git describe --match "[0-9]*.[0-9]*.[0-9]*" --abbrev=0 --tags origin/main || echo "1.0.0"`
+            echo 
             VERSION_BITS=(${VERSION//./ })
             VNUM1=${VERSION_BITS[0]}
             VNUM2=$((VERSION_BITS[1]+1))
@@ -40,6 +41,9 @@ jobs:
           else
             VERSION="${{ github.event.inputs.major-version }}"
           fi
+          echo "version is $VERSION"
+          
           ASSET=`ls dist/assets | grep -o 'dist/assets/index-.*\.js'`
+          echo "asset is $ASSET"
           
           gh release create --generate-notes $VERSION $ASSET#index.js
