@@ -12,13 +12,13 @@ Alpine.data('helpers', () => ({
   defaultMainProduct: DEFAULT_MAIN_PRODUCT,
   formatNumber(value, prefix = false) {
     const formatted = value.toLocaleString('fr-FR', {
-      minimumFractionDigits: 0, maximumFractionDigits: 2,
+      minimumFractionDigits: Math.ceil(value % 1) * 2, maximumFractionDigits: 2,
     });
     return prefix ? this._prefixed(formatted) : formatted;
   },
   formatCurrency(value, prefix = false) {
     const formatted = value.toLocaleString('fr-FR', {
-      style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 2,
+      style: 'currency', currency: 'EUR', minimumFractionDigits: Math.ceil(value % 1) * 2, maximumFractionDigits: 2,
     });
     return prefix ? this._prefixed(formatted) : formatted;
   },
