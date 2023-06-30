@@ -75,7 +75,7 @@ Alpine.store('chart', {
     chart.data.datasets[0].backgroundColor[index] = window.BackgroundColors[kind] || DefaultColor;
     chart.data.datasets[1].backgroundColor[index] = window.Colors[kind] || DefaultColor;
     if (worst) {
-      chart.data.datasets[1].data[index] = best;
+      chart.data.datasets[1].data[index] = best - worst;
       chart.data.datasets[0].data[index] = worst;
     } else {
       chart.data.datasets[0].backgroundColor[index] = window.Colors[kind] || DefaultColor;
