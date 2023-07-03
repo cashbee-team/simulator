@@ -1,994 +1,563 @@
-<!DOCTYPE html><!-- Last Published: Fri May 26 2023 08:23:59 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain='www.cashbee.fr' data-wf-page='646c84e221d9bb03938c9714' data-wf-site='5de92161372b4da5bdf82ef1'>
-<head>
-  <meta charset='utf-8' />
-  <title>Simulateur d&#x27;épargne V3 Custom HTML</title>
-  <meta
-    content='Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement.'
-    name='description' />
-  <meta content='Simulateur d&#x27;épargne V3 Custom HTML' property='og:title' />
-  <meta
-    content='Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement.'
-    property='og:description' />
-  <meta content='Simulateur d&#x27;épargne V3 Custom HTML' property='twitter:title' />
-  <meta
-    content='Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement.'
-    property='twitter:description' />
-  <meta property='og:type' content='website' />
-  <meta content='summary_large_image' name='twitter:card' />
-  <meta content='width=device-width, initial-scale=1' name='viewport' />
-  <link href='https://assets.website-files.com/5de92161372b4da5bdf82ef1/css/cshb.de9fa98de.min.css' rel='stylesheet'
-        type='text/css' />
-  <script src='https://use.typekit.net/tag7row.js' type='text/javascript'></script>
-  <script type='text/javascript'>try {
-    Typekit.load();
-  } catch (e) {
-  }</script>
-  <script type='text/javascript'>!function(o, c) {
-    var n = c.documentElement, t = ' w-mod-';
-    n.className += t + 'js', ('ontouchstart' in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + 'touch');
-  }(window, document);</script>
-  <link href='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5ec409a57682da2a1733f757_Fav32.png'
-        rel='shortcut icon' type='image/x-icon' />
-  <link href='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5ec408133bee5e61f0d6c1b0_cashbee.ico'
-        rel='apple-touch-icon' /><!--This is for Helpscout's beacon-->
+<!DOCTYPE html><!-- Last Published: Thu Jun 29 2023 15:34:06 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.cashbee.fr" data-wf-page="646c84e221d9bb03938c9714" data-wf-site="5de92161372b4da5bdf82ef1"><head><meta charset="utf-8"/><title>Simulateur d&#x27;épargne</title><meta content="Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement." name="description"/><meta content="Simulateur d&#x27;épargne" property="og:title"/><meta content="Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement." property="og:description"/><meta content="Simulateur d&#x27;épargne" property="twitter:title"/><meta content="Estimez la performance des placements Cashbee dans la durée, découvrez le rendement potentiel de votre investissement." property="twitter:description"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="https://assets.website-files.com/5de92161372b4da5bdf82ef1/css/cshb.e509ee56e.min.css" rel="stylesheet" type="text/css"/><script src="https://use.typekit.net/tag7row.js" type="text/javascript"></script><script type="text/javascript">try{Typekit.load();}catch(e){}</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5ec409a57682da2a1733f757_Fav32.png" rel="shortcut icon" type="image/x-icon"/><link href="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5ec408133bee5e61f0d6c1b0_cashbee.ico" rel="apple-touch-icon"/><!--This is for Helpscout's beacon-->
 
-  <script type='text/javascript'>!function(e, t, n) {
-    function a() {
-      var e = t.getElementsByTagName('script')[0], n = t.createElement('script');
-      n.type = 'text/javascript', n.async = !0, n.src = 'https://beacon-v2.helpscout.net', e.parentNode.insertBefore(n, e);
-    }
+<script type="text/javascript">!function (e, t, n) {
+  function a() {
+    var e = t.getElementsByTagName("script")[0], n = t.createElement("script");
+    n.type = "text/javascript", n.async = !0, n.src = "https://beacon-v2.helpscout.net", e.parentNode.insertBefore(n, e)
+  }
 
-    if (e.Beacon = n = function(t, n, a) {
-      e.Beacon.readyQueue.push({ method: t, options: n, data: a });
-    }, n.readyQueue = [], 'complete' === t.readyState) return a();
-    e.attachEvent ? e.attachEvent('onload', a) : e.addEventListener('load', a, !1);
-  }(window, document, window.Beacon || function() {
-  });
-  </script>
+  if (e.Beacon = n = function (t, n, a) {
+    e.Beacon.readyQueue.push({method: t, options: n, data: a})
+  }, n.readyQueue = [], "complete" === t.readyState) return a();
+  e.attachEvent ? e.attachEvent("onload", a) : e.addEventListener("load", a, !1)
+}(window, document, window.Beacon || function () {
+});
+</script>
 
-  <script>
-    const excluded_beacon_pages = ['/doc', '/webviews'];
-    const excluded_gtm_pages = ['/doc', '/web'];
-    if (excluded_gtm_pages.filter(path => window.location.pathname.match(path)).length == 0) {
-      (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js',
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-5QJ3WHC');
+<script>
+  const excluded_beacon_pages = ['/doc', '/webviews']
+  const excluded_gtm_pages = ['/doc', '/web']
+  if (excluded_gtm_pages.filter(path => window.location.pathname.match(path)).length == 0) {
+    (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+	})(window, document, 'script', 'dataLayer', 'GTM-5QJ3WHC')
 
-    }
-    if (excluded_beacon_pages.filter(path => window.location.pathname.match(path)).length == 0) {
-      window.Beacon('init', '570f8756-13fe-4937-ae51-e2438c82081c');
-    }
-  </script>
+  }
+  if (excluded_beacon_pages.filter(path => window.location.pathname.match(path)).length == 0) {
+  	window.Beacon('init', '570f8756-13fe-4937-ae51-e2438c82081c')
+  }
+</script>
 
-  <script>
-    function sendEventEmailSent() {
-      for (const el of document.querySelectorAll('[email-event="true"]')) {
+<script>
+function sendEventEmailSent() {
+    for (const el of document.querySelectorAll('[email-event="true"]')) {
         if (el) {
-          el.addEventListener('submit', function() {
-            window.dataLayer.push({ event: 'download_email_sent' });
-          });
+            el.addEventListener("submit", function() {
+                window.dataLayer.push({event: 'download_email_sent'});
+            })
         }
-      }
     }
+}
 
-    function sendSms(phone, oneLink) {
-      if (phone.length === 14) {
+function sendSms(phone, oneLink) {
+    if (phone.length === 14) {
         const oneLinkParams = Object.fromEntries(
-          new URLSearchParams(oneLink.search),
+            new URLSearchParams(oneLink.search)
         );
         const request = {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          method: 'POST',
-          mode: 'cors',
-          body: JSON.stringify({
-            phone: phone.replace(/\s/g, ''),
-            conversion: oneLinkParams,
-          }),
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify({
+                phone: phone.replace(/\s/g, ""),
+                conversion: oneLinkParams,
+            }),
         };
-        fetch('https://api.cashbee.fr/www/v1/download_sms', request);
-        window.dataLayer.push({ event: 'download_sms_sent' });
-      }
+        fetch("https://api.cashbee.fr/www/v1/download_sms", request);
+        window.dataLayer.push({event: 'download_sms_sent'});
     }
-
-    function validationPhone(form, phone) {
-      if (phone.length < 14 || phone.length > 14) {
-        return true;
-      }
+}
+function validationPhone(form, phone) {
+    if (phone.length < 14 || phone.length > 14) {
+        return true
     }
+}
 
-    function addshareLink() {
-      function shareLinkListener(baseUrl) {
-        return function(event) {
-          event.preventDefault();
-          const url = window.location;
-          window.open(baseUrl + encodeURIComponent(url));
+function addshareLink() {
+    function shareLinkListener(baseUrl) {
+        return function (event) {
+            event.preventDefault();
+            const url = window.location;
+            window.open(baseUrl + encodeURIComponent(url));
         };
-      }
-
-      document
+    }
+    document
         .querySelectorAll('[data-twitter-share="true"]')
-        .forEach(function(b) {
-          b.addEventListener(
-            'click',
-            shareLinkListener('https://twitter.com/share?url='),
-          );
-        });
-      document
-        .querySelectorAll('[data-facebook-share="true"]')
-        .forEach(function(b) {
-          b.addEventListener(
-            'click',
-            shareLinkListener('https://www.facebook.com/sharer/sharer.php?u='),
-          );
-        });
-      document
-        .querySelectorAll('[data-linkedin-share="true"]')
-        .forEach(function(b) {
-          b.addEventListener(
-            'click',
-            shareLinkListener(
-              'https://www.linkedin.com/shareArticle?mini=true&url=',
-            ),
-          );
-        });
-      for (const el of document.querySelectorAll('[data-mailto="true"]')) {
-        el.href = 'mailto:hello@cashbee.fr';
-      }
-    };
-
-    function storeLink(oneLink) {
-      if (oneLink) {
-        for (const el of document.querySelectorAll('.store-link')) {
-          el.href = oneLink;
-          el.addEventListener('click', function() {
-            window.dataLayer.push({ event: 'download_store_click' });
-          });
-        }
-      }
-    }
-
-    function formatPhoneNumber() {
-      for (const phone of document.querySelectorAll('[data-sms="true"]')) {
-        if (phone) {
-          phone.addEventListener('keyup', function(event) {
-            const n = phone.value.replace(
-              /(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/,
-              '$1 $2 $3 $4 $5',
+        .forEach(function (b) {
+            b.addEventListener(
+                "click",
+                shareLinkListener("https://twitter.com/share?url=")
             );
-            phone.value = n.toLocaleString();
-          });
-        }
-      }
+        });
+    document
+        .querySelectorAll('[data-facebook-share="true"]')
+        .forEach(function (b) {
+            b.addEventListener(
+                "click",
+                shareLinkListener("https://www.facebook.com/sharer/sharer.php?u=")
+            );
+        });
+    document
+        .querySelectorAll('[data-linkedin-share="true"]')
+        .forEach(function (b) {
+            b.addEventListener(
+                "click",
+                shareLinkListener(
+                    "https://www.linkedin.com/shareArticle?mini=true&url="
+                )
+            );
+        });
+    for (const el of document.querySelectorAll('[data-mailto="true"]')) {
+        el.href = "mailto:hello@cashbee.fr";
     }
+};
 
-    //Script coming from https://support.appsflyer.com/hc/en-us/articles/360000677217-Mobile-landing-page-attribution-guide
-    //Returns the value of a parameter existing in the page's URL or ' ' if not exists.
-    function getParameterFromURL(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, '\\$&');
-      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+function storeLink(oneLink) {
+    if (oneLink) {
+        for (const el of document.querySelectorAll(".store-link")) {
+            el.href = oneLink;
+            el.addEventListener("click", function () {
+                window.dataLayer.push({event: 'download_store_click'});
+            });
+        }
+    }
+}
+function formatPhoneNumber() {
+    for (const phone of document.querySelectorAll('[data-sms="true"]')) {
+        if (phone) {
+            phone.addEventListener("keyup", function (event) {
+                const n = phone.value.replace(
+                    /(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/,
+                    "$1 $2 $3 $4 $5"
+                );
+                phone.value = n.toLocaleString();
+            });
+        }
+    }
+}
+//Script coming from https://support.appsflyer.com/hc/en-us/articles/360000677217-Mobile-landing-page-attribution-guide
+//Returns the value of a parameter existing in the page's URL or ' ' if not exists.
+function getParameterFromURL(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    function isAFLink() {
-      return getParameterFromURL('af_redirect');
-    }
-
-    function isFacebook() {
-      if (document.referrer && document.referrer !== '') {
-        return document.referrer.toLowerCase().includes('facebook');
-      } else {
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function isAFLink() {
+    return getParameterFromURL("af_redirect");
+}
+function isFacebook() {
+    if (document.referrer && document.referrer !== "") {
+        return document.referrer.toLowerCase().includes("facebook");
+    } else {
         return false;
-      }
     }
-
-    // generateUrl returns the URL to use behind the iOS and Android "Download" buttons on a landing page, based on the source of the page visitor.
-    // By default these buttons should direct to the apps' pages on iTunes and Google Play.
-    // If these links should be kept with no change, generateUrl returns ' '.
-    // Otherwise, generateUrl returns the URL to be used under BOTH buttons (a single app download button could also be used in this case).
-    // Parameters: isDebug - if true, alerts are issued for each of the cases, otherwise not.
-    function generateUrl(campaign, pid) {
-      const oneLinkURL = 'https://cashbee.onelink.me/B4qh'; // **** Replace with your own basic OneLink URL ****
-      let finalURL = '';
-      let partnerIDParam = '?pid=';
-      let campaignValue = campaign;
-      if (!campaign) {
-        if (getParameterFromURL('af_c')) {
-          campaignValue = getParameterFromURL('af_c');
-        } else if (getParameterFromURL('utm_campaign')) {
-          campaignValue = getParameterFromURL('utm_campaign');
+}
+// generateUrl returns the URL to use behind the iOS and Android "Download" buttons on a landing page, based on the source of the page visitor.
+// By default these buttons should direct to the apps' pages on iTunes and Google Play.
+// If these links should be kept with no change, generateUrl returns ' '.
+// Otherwise, generateUrl returns the URL to be used under BOTH buttons (a single app download button could also be used in this case).
+// Parameters: isDebug - if true, alerts are issued for each of the cases, otherwise not.
+function generateUrl(campaign, pid) {
+    const oneLinkURL = "https://cashbee.onelink.me/B4qh"; // **** Replace with your own basic OneLink URL ****
+    let finalURL = "";
+    let partnerIDParam = "?pid=";
+    let campaignValue = campaign;
+    if (!campaign) {
+        if (getParameterFromURL("af_c")) {
+            campaignValue = getParameterFromURL("af_c");
+        } else if (getParameterFromURL("utm_campaign")) {
+            campaignValue = getParameterFromURL("utm_campaign");
         } else {
-          campaignValue = 'unknown';
+            campaignValue = "unknown";
         }
-      }
-      let campaignParam = '&c=';
-      let gclidParam = '&af_sub1=';
-      const gclidValue = getParameterFromURL('gclid');
-      let kwParam = '';
-      let kwValue = getParameterFromURL('utm_term');
-      let adsetParam = '&af_adset=';
-      let adsetValue = getParameterFromURL('adset');
-      let adParam = '&af_ad=';
-      let adValue = getParameterFromURL('utm_content');
-      let channelParam = '&af_channel=';
-      let pidValue = pid;
-      if (kwValue) {
-        kwParam += '&af_keywords=';
+    }
+    let campaignParam = "&c=";
+    let gclidParam = "&af_sub1=";
+    const gclidValue = getParameterFromURL("gclid");
+    let kwParam = "";
+    let kwValue = getParameterFromURL("utm_term");
+    let adsetParam = "&af_adset=";
+    let adsetValue = getParameterFromURL("adset");
+    let adParam = "&af_ad=";
+    let adValue = getParameterFromURL("utm_content");
+    let channelParam = "&af_channel=";
+    let pidValue = pid;
+    if (kwValue) {
+        kwParam += "&af_keywords=";
         kwParam += kwValue;
-      }
-      if (getParameterFromURL('utm_medium')) {
-        channelParam += getParameterFromURL('utm_medium');
-      }
-      if (getParameterFromURL('af_pid')) {
-        pidValue = getParameterFromURL('af_pid');
-      } else if (getParameterFromURL('utm_source')) {
-        pidValue = getParameterFromURL('utm_source');
-      }
-      // User was redirected using af_r parameter on an AppsFlyer attribution link
-      if (isAFLink()) {
+    }
+    if (getParameterFromURL("utm_medium")) {
+        channelParam += getParameterFromURL("utm_medium");
+    }
+    if (getParameterFromURL("af_pid")) {
+        pidValue = getParameterFromURL("af_pid");
+    } else if (getParameterFromURL("utm_source")) {
+        pidValue = getParameterFromURL("utm_source");
+    }
+    // User was redirected using af_r parameter on an AppsFlyer attribution link
+    if (isAFLink()) {
         return; // in this case, the original store links in the install buttons stay the same
-      }
-      if (gclidValue) {
+    }
+    if (gclidValue) {
         // Google Ads
-        if (adValue) adParam = '&af_ad_id=' + adValue;
-        if (adsetValue) adsetParam = '&af_adset_id=' + adsetValue;
-        partnerIDParam += 'google_lp';
+        if (adValue) adParam = "&af_ad_id=" + adValue;
+        if (adsetValue) adsetParam = "&af_adset_id=" + adsetValue;
+        partnerIDParam += "google_lp";
         campaignParam += campaignValue;
         gclidParam += gclidValue;
         finalURL =
-          oneLinkURL +
-          partnerIDParam +
-          campaignParam +
-          gclidParam +
-          kwParam +
-          adParam +
-          adsetParam;
+            oneLinkURL +
+            partnerIDParam +
+            campaignParam +
+            gclidParam +
+            kwParam +
+            adParam +
+            adsetParam;
         return new URL(finalURL);
-      } else if (pidValue) {
+    } else if (pidValue) {
         // Other SRNs and custom networks
         if (adValue) adParam += adValue;
         if (adsetValue) adsetParam += adsetValue;
         campaignParam += campaignValue;
         partnerIDParam += pidValue;
         finalURL =
-          oneLinkURL +
-          partnerIDParam +
-          campaignParam +
-          adsetParam +
-          channelParam +
-          kwParam +
-          adParam;
+            oneLinkURL +
+            partnerIDParam +
+            campaignParam +
+            adsetParam +
+            channelParam +
+            kwParam +
+            adParam;
         return new URL(finalURL);
-      } else if (!isFacebook()) {
+    } else if (!isFacebook()) {
         // organic user
         if (adValue) adParam += adValue;
         if (adsetValue) adsetParam += adsetValue;
-        partnerIDParam += 'website'; //**** Replace value if you wish organic users to be attributed to another media source than 'website' ****
+        partnerIDParam += "website"; //**** Replace value if you wish organic users to be attributed to another media source than 'website' ****
         finalURL =
-          oneLinkURL +
-          partnerIDParam +
-          campaignParam +
-          adsetParam +
-          channelParam +
-          kwParam +
-          adParam;
+            oneLinkURL +
+            partnerIDParam +
+            campaignParam +
+            adsetParam +
+            channelParam +
+            kwParam +
+            adParam;
         return new URL(finalURL);
-      } else {
+    } else {
         // Facebook is already tracked
         return new URL(oneLinkURL);
-      }
     }
-
-    //script for default landing page
-    if (window.location.pathname.split('/')[1] !== 'page') {
-      window.onload = function() {
+}
+//script for default landing page
+if (window.location.pathname.split("/")[1] !== "page") {
+    window.onload = function () {
         formatPhoneNumber();
         addshareLink();
         sendEventEmailSent();
-
         function getOneLink() {
-          let { oneLink, expiryDate } = JSON.parse(
-            localStorage.getItem('attrib') || '{}',
-          );
-          if (!oneLink || Date.now() > expiryDate) {
-            oneLink = generateUrl(null, null);
-            expiryDate = Date.now() + 7 * 24 * 3600 * 1000;
-            localStorage.setItem('attrib', JSON.stringify({ oneLink, expiryDate }));
-          }
-          return oneLink;
-        }
-
-        const oneLink = new URL(getOneLink());
-        storeLink(oneLink);
-        for (const form of document.querySelectorAll('.w-form')) {
-          if (form) {
-            const smsForm = form.querySelector('[id="wf-form-Twillio-Form"]');
-            smsForm
-              .querySelector('[data-getlink="true"]')
-              .addEventListener('click', function(event) {
-                const phone = smsForm.querySelector('[data-name="Phone"]').value;
-                if (validationPhone(form, phone)) {
-                  event.preventDefault();
-                }
-                sendSms(phone, oneLink);
-              });
-          }
-        }
-      };
-    }
-    //script for custom landing page
-    let urlPath = window.location.pathname.split('/');
-    if (urlPath[1] == 'page') {
-      window.onload = function() {
-        formatPhoneNumber();
-        addshareLink();
-        sendEventEmailSent();
-
-        function getOneLink() {
-          let { oneLink, expiryDate } = JSON.parse(
-            localStorage.getItem('attrib') || '{}',
-          );
-          if (!oneLink || Date.now() > expiryDate) {
-            oneLink = generateUrl(urlPath[2], urlPath[1]);
-            expiryDate = Date.now() + 7 * 24 * 3600 * 1000;
-            localStorage.setItem('attrib', JSON.stringify({ oneLink, expiryDate }));
-          }
-          return oneLink;
-        }
-
-        const oneLink = new URL(getOneLink());
-        storeLink(oneLink);
-        for (const form of document.querySelectorAll('.w-form')) {
-          if (form) {
-            const smsForm = form.querySelector('[id="wf-form-Twillio-Form"]');
-            if (smsForm) {
-              smsForm
-                .querySelector('[data-getlink="true"]')
-                .addEventListener('click', function(event) {
-                  const phone = smsForm.querySelector('[data-name="Phone"]').value;
-                  if (validationPhone(form, phone)) {
-                    event.preventDefault();
-                  }
-                  sendSms(phone, oneLink);
-                });
+            let { oneLink, expiryDate } = JSON.parse(
+                localStorage.getItem("attrib") || "{}"
+            );
+            if (!oneLink || Date.now() > expiryDate) {
+                oneLink = generateUrl(null, null);
+                expiryDate = Date.now() + 7 * 24 * 3600 * 1000;
+                localStorage.setItem("attrib", JSON.stringify({ oneLink, expiryDate }));
             }
-          }
+            return oneLink;
         }
-      };
-    }
-  </script>
-
-  <!-- This is CSS to remove scrollbars -->
-  <style>
-      .left {
-          -ms-overflow-style: none;
-      / / IE 10 + overflow: -moz-scrollbars-none;
-      / / Firefox
-      }
-
-      .left::-webkit-scrollbar {
-          display: none;
-      / / Safari and Chrome
-      }
-  </style>
-</head>
-<body class='body-v3'>
-<div class='w-embed w-iframe'><!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src='https://www.googletagmanager.com/ns.html?id=GTM-5QJ3WHC'
-            height='0' width='0' style='display:none;visibility:hidden'></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) --></div>
-<div class='section-v2 nomargin header wf-section'>
-  <div data-collapse='medium' data-animation='over-right' data-duration='400' data-easing='ease' data-easing2='ease'
-       role='banner' class='navbar-v2 w-nav'><a href='/' class='brand w-nav-brand'><img
-    src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5de937c51db32aaf9bd95427_Cashbee.svg' alt=''
-    class='logo-header' /></a>
-    <nav role='navigation' class='nav-menu w-nav-menu'>
-      <div class='sidebar-menu-button-wrapper'>
-        <div class='menu-button sidebar w-nav-button'>
-          <div class='icon w-icon-nav-menu'></div>
-        </div>
-      </div>
-      <div class='nav-menu-dropdown'>
-        <div data-hover='true' data-delay='0' class='dropdown-header w-dropdown'>
-          <div class='dropdown-toggle w-dropdown-toggle'>
-            <div>Épargner</div>
-          </div>
-          <nav class='dropdown-list w-dropdown-list'><a href='/livret-cashbee'
-                                                        class='nav-link dropdown w-dropdown-link'>Livret Cashbee</a><a
-            href='/cashbee-plus' class='nav-link dropdown w-dropdown-link'>Pilote auto</a><a href='/equilibre'
-                                                                                             class='nav-link dropdown w-dropdown-link'>Équilibre</a><a
-            href='/collections' class='nav-link dropdown w-dropdown-link'>Collections</a><a href='/produits-structures'
-                                                                                            class='nav-link dropdown w-dropdown-link'>Produits
-            Structurés</a><a href='/cashbee-pro' class='nav-link dropdown w-dropdown-link'>Cashbee Pro</a></nav>
-        </div>
-        <div data-hover='true' data-delay='0' class='dropdown-header w-dropdown'>
-          <div class='w-dropdown-toggle'>
-            <div>Comprendre</div>
-          </div>
-          <nav class='dropdown-list w-dropdown-list'><a href='/the-interest'
-                                                        class='nav-link dropdown theinterest w-dropdown-link'>The
-            Interest <span class='blog-span'>Blog</span></a><a href='/briefings'
-                                                               class='nav-link dropdown w-dropdown-link'>Briefings</a><a
-            href='/fiches-pratiques' class='nav-link dropdown w-dropdown-link'>Fiches pratiques</a><a href='/lexique'
-                                                                                                      class='nav-link dropdown w-dropdown-link'>Lexique</a><a
-            href='http://help.cashbee.fr' target='_blank' class='nav-link dropdown w-dropdown-link'>Centre d’aide</a>
-          </nav>
-        </div>
-        <a href='/simulateur' class='nav-link header'>Faire une simulation</a></div>
-      <div class='nav-mobile-menu'><h3>Épargner</h3><a href='/livret-cashbee' class='nav-link dropdown'>Livret</a><a
-        href='/cashbee-plus' class='nav-link dropdown'>Pilote auto</a><a href='/equilibre' class='nav-link dropdown'>Équilibre</a><a
-        href='/collections' class='nav-link dropdown'>Collections</a><a href='/produits-structures'
-                                                                        class='nav-link dropdown'>Produits
-        structurés</a><a href='/cashbee-pro' class='nav-link dropdown'>Cashbee Pro</a>
-        <div class='spacer _10'></div>
-        <h3>Comprendre</h3><a href='/the-interest' class='nav-link dropdown theinterest'>The Interest <span
-          class='blog-span'>Blog</span></a><a href='/simulateur' class='nav-link dropdown'>Simulateur d’épargne</a><a
-          href='/briefings' class='nav-link dropdown'>Briefings</a><a href='/fiches-pratiques'
-                                                                      class='nav-link dropdown'>Fiches pratiques</a><a
-          href='/lexique' class='nav-link dropdown'>Lexique</a><a href='http://help.cashbee.fr' target='_blank'
-                                                                  class='nav-link dropdown'>Centre d&#x27;aide</a>
-        <div class='spacer _10'></div>
-        <a href='/simulateur' class='button secondary w-button'>Faire une simulation</a>
-        <div class='button-form'>
-          <div data-w-id='ff4ba2cd-d7be-d06d-a629-9c75feef885e' class='button-form-click-zone'>
-            <div data-w-id='ff4ba2cd-d7be-d06d-a629-9c75feef885f'>Essayer l’app</div>
-            <div class='form-button-close'>
-              <div>✕</div>
-            </div>
-          </div>
-          <div class='button-form-input-wrapper w-form'>
-            <form method='post' name='wf-form-Twillio-Form' data-name='Twillio Form' id='wf-form-Twillio-Form'
-                  class='button-form-div w-clearfix'><input type='tel' class='form-input small w-input' maxlength='256'
-                                                            name='Phone' data-name='Phone'
-                                                            placeholder='Votre n° de tél.' data-sms='true' id='field'
-                                                            required='' /><input type='submit' value='→'
-                                                                                 data-wait='Un instant'
-                                                                                 data-getlink='true'
-                                                                                 class='button-form-submit-button w-button' />
-            </form>
-            <div class='success-message small w-form-done'>
-              <div>Un SMS arrive !</div>
-            </div>
-            <div class='error-message small w-form-fail'>
-              <div>Erreur</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='badges-store-menu-bloc'><a
-        href='https://apps.apple.com/fr/app/cashbee-l%C3%A9pargne-simple/id1438670175'
-        class='store-badge nav w-inline-block'><img
-        src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae45722a01bf99cdabdc7_black%404x.png'
-        alt='Cashbee sur l&#x27;App Store' class='badge' /></a><a
-        href='https://play.google.com/store/apps/details?id=fr.cashbee.cashbee&amp;hl=fr&amp;gl=US'
-        class='store-badge nav w-inline-block'><img
-        src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google.png'
-        sizes='100vw'
-        srcset='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google-p-500.png 500w, https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google.png 1132w'
-        alt='Cashbee sur Google Play' class='badge' /></a></div>
-      <div class='button-form-desktop-carrier'>
-        <div class='button-form'>
-          <div data-w-id='ff4ba2cd-d7be-d06d-a629-9c75feef885e' class='button-form-click-zone'>
-            <div data-w-id='ff4ba2cd-d7be-d06d-a629-9c75feef885f'>Essayer l’app</div>
-            <div class='form-button-close'>
-              <div>✕</div>
-            </div>
-          </div>
-          <div class='button-form-input-wrapper w-form'>
-            <form method='post' name='wf-form-Twillio-Form' data-name='Twillio Form' id='wf-form-Twillio-Form'
-                  class='button-form-div w-clearfix'><input type='tel' class='form-input small w-input' maxlength='256'
-                                                            name='Phone' data-name='Phone'
-                                                            placeholder='Votre n° de tél.' data-sms='true' id='field'
-                                                            required='' /><input type='submit' value='→'
-                                                                                 data-wait='Un instant'
-                                                                                 data-getlink='true'
-                                                                                 class='button-form-submit-button w-button' />
-            </form>
-            <div class='success-message small w-form-done'>
-              <div>Un SMS arrive !</div>
-            </div>
-            <div class='error-message small w-form-fail'>
-              <div>Erreur</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div class='menu-button w-nav-button'>
-      <div class='icon w-icon-nav-menu'></div>
-    </div>
-  </div>
-</div>
-<div class='section-v2 lowmargin wf-section'><h1>Simulez la performance de vos placements</h1>
-  <div class='spacer _20'></div>
-  <div x-data='helpers' id='w-node-d3425547-7784-5193-2baf-5349d132207a-938c9714'
-       class='simulator--form-wrapper w-form'>
-    <form id='formSimulator' name='wf-form-simulator' data-name='simulator'
-          action='https://calendly.com/clement-tempiabonda/echange-avec-cashbee' method='get' class='simulator--form'>
-      <div id='w-node-_55771ad4-9551-a54e-183e-48ed154ebae7-938c9714' class='simulator--column'>
-        <div class='utility--island-div'>
-          <div class='utility--island-inner-stack'>
-            <div class='simulator--stack-horizontal'><label for='initial-amount' class='simulator--field-label'>Si vous
-              placez au départ</label>
-              <div class='simulator--value-div'>
-                <div id='textInitialAmount' x-text='formatCurrency($store.inputs.initialAmount)'>10000 €</div>
-              </div>
-            </div>
-            <div class='w-embed'><input x-model.number='$store.inputs.initialAmount' type='range' min='1000'
-                                        max='250000' step='1000' value='1000' class='slider' id='initialAmountSlider'
-                                        name='initialAmount'></div>
-          </div>
-          <div class='utility--island-inner-stack'>
-            <div class='simulator--stack-horizontal'><label for='monthlyAmountField'
-                                                            class='simulator--field-label'>Puis</label>
-              <div class='simulator--value-div'>
-                <div id='textMonthlyAmount' x-text='formatCurrency($store.inputs.monthlyAmount)'>500 €</div>
-              </div>
-              <label for='monthlyAmountField-2' class='simulator--field-label'>chaque mois</label></div>
-            <div class='w-embed'><input x-model.number='$store.inputs.monthlyAmount' type='range' min='0' max='1500'
-                                        step='50' value='100' class='slider' id='monthlyAmountSlider'
-                                        name='monthlyAmount'></div>
-          </div>
-          <div class='utility--island-inner-stack'>
-            <div class='simulator--stack-horizontal'><label for='duration'
-                                                            class='simulator--field-label'>Pendant</label>
-              <div class='simulator--value-div'>
-                <div id='textDuration' x-text='`${$store.inputs.duration} ans`'>8 ans</div>
-              </div>
-            </div>
-            <div class='w-embed'><input x-model.number='$store.inputs.duration' type='range' min='1' max='30' step='1'
-                                        value='1' class='slider' id='durationSlider' name='duration'></div>
-          </div>
-        </div>
-        <div x-init='clickDefault($el)' x-data='productPicker(defaultMainProduct, &#x27;main&#x27;)'
-             class='utility--island-div'>
-          <div class='utility--island-inner-stack larger'>
-            <div class='simulator--stack-horizontal'><label for='productSelect' class='simulator--field-label'>Sur le
-              placement</label>
-              <div class='simulator--value-div'>
-                <div id='textProduct' x-text='product'>Livret</div>
-              </div>
-            </div>
-            <div class='simulator--product-picker-container'>
-              <div class='simulator--product-picker-wrapper w-dyn-list'>
-                <div role='list' class='simulator--product-picker-list w-dyn-items'>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff6953351e4b54eed7dca2_LCA.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#c28800' class='simulator--product-picker-item-label'>Livret</div>
-                      <div class='w-embed'><input type='radio' value='Livret' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
-
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #c28800;
+        const oneLink = new URL(getOneLink());
+        storeLink(oneLink);
+        for (const form of document.querySelectorAll('.w-form')) {
+            if (form) {
+                const smsForm = form.querySelector('[id="wf-form-Twillio-Form"]');
+                smsForm
+                    .querySelector('[data-getlink="true"]')
+                    .addEventListener("click", function (event) {
+                        const phone = smsForm.querySelector('[data-name="Phone"]').value;
+                        if (validationPhone(form, phone)) {
+                            event.preventDefault();
+                        }
+                        sendSms(phone, oneLink);
+                    });
+            }
+        }
+    };
+}
+//script for custom landing page
+let urlPath = window.location.pathname.split("/");
+if (urlPath[1] == "page") {
+    window.onload = function () {
+        formatPhoneNumber();
+        addshareLink();
+        sendEventEmailSent();
+        function getOneLink() {
+            let { oneLink, expiryDate } = JSON.parse(
+                localStorage.getItem("attrib") || "{}"
+            );
+            if (!oneLink || Date.now() > expiryDate) {
+                oneLink = generateUrl(urlPath[2], urlPath[1]);
+                expiryDate = Date.now() + 7 * 24 * 3600 * 1000;
+                localStorage.setItem("attrib", JSON.stringify({oneLink, expiryDate}));
+            }
+            return oneLink;
+        }
+        const oneLink = new URL(getOneLink());
+        storeLink(oneLink);
+        for (const form of document.querySelectorAll('.w-form')) {
+            if (form) {
+                const smsForm = form.querySelector('[id="wf-form-Twillio-Form"]');
+                if (smsForm) {
+                    smsForm
+                        .querySelector('[data-getlink="true"]')
+                        .addEventListener("click", function (event) {
+                            const phone = smsForm.querySelector('[data-name="Phone"]').value;
+                            if (validationPhone(form, phone)) {
+                                event.preventDefault();
                             }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff695dc07f3230a2999be8_EQU.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#26008f' class='simulator--product-picker-item-label'>Équilibre</div>
-                      <div class='w-embed'><input type='radio' value='Équilibre' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+                            sendSms(phone, oneLink);
+                        });
+                }
+            }
+        }
+    };
+}
+</script>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #26008f;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff6995083fc0373b1f0403_IMO.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#007012' class='simulator--product-picker-item-label'>Immobilier</div>
-                      <div class='w-embed'><input type='radio' value='Immobilier' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+<!-- This is CSS to remove scrollbars -->
+<style>
+  .left { -ms-overflow-style: none; // IE 10+ overflow: -moz-scrollbars-none; // Firefox } .left::-webkit-scrollbar { display: none; // Safari and Chrome }
+</style>
+</head><body class="body-v3"><div class="w-embed w-iframe"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QJ3WHC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --></div><div class="section-v2 nomargin header wf-section"><div data-collapse="medium" data-animation="over-right" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-v2 w-nav"><a href="/" class="brand w-nav-brand"><img src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5de937c51db32aaf9bd95427_Cashbee.svg" alt="" class="logo-header"/></a><nav role="navigation" class="nav-menu w-nav-menu"><div class="sidebar-menu-button-wrapper"><div class="menu-button sidebar w-nav-button"><div class="icon w-icon-nav-menu"></div></div></div><div class="nav-menu-dropdown"><div data-hover="true" data-delay="0" class="dropdown-header w-dropdown"><div class="dropdown-toggle w-dropdown-toggle"><div>Épargner</div></div><nav class="dropdown-list w-dropdown-list"><a href="/livret-cashbee" class="nav-link dropdown w-dropdown-link">Livret Cashbee</a><a href="/cashbee-plus" class="nav-link dropdown w-dropdown-link">Pilote auto</a><a href="/equilibre" class="nav-link dropdown w-dropdown-link">Équilibre</a><a href="/collections" class="nav-link dropdown w-dropdown-link">Collections</a><a href="/produits-structures" class="nav-link dropdown w-dropdown-link">Produits Structurés</a><a href="/cashbee-pro" class="nav-link dropdown w-dropdown-link">Cashbee Pro</a></nav></div><div data-hover="true" data-delay="0" class="dropdown-header w-dropdown"><div class="w-dropdown-toggle"><div>Comprendre</div></div><nav class="dropdown-list w-dropdown-list"><a href="/the-interest" class="nav-link dropdown theinterest w-dropdown-link">The Interest <span class="blog-span">Blog</span></a><a href="/briefings" class="nav-link dropdown w-dropdown-link">Briefings</a><a href="/fiches-pratiques" class="nav-link dropdown w-dropdown-link">Fiches pratiques</a><a href="/lexique" class="nav-link dropdown w-dropdown-link">Lexique</a><a href="http://help.cashbee.fr" target="_blank" class="nav-link dropdown w-dropdown-link">Centre d’aide</a></nav></div><a href="/simulateur" aria-current="page" class="nav-link header w--current">Faire une simulation</a></div><div class="nav-mobile-menu"><h3>Épargner</h3><a href="/livret-cashbee" class="nav-link dropdown">Livret</a><a href="/cashbee-plus" class="nav-link dropdown">Pilote auto</a><a href="/equilibre" class="nav-link dropdown">Équilibre</a><a href="/collections" class="nav-link dropdown">Collections</a><a href="/produits-structures" class="nav-link dropdown">Produits structurés</a><a href="/cashbee-pro" class="nav-link dropdown">Cashbee Pro</a><div class="spacer _10"></div><h3>Comprendre</h3><a href="/the-interest" class="nav-link dropdown theinterest">The Interest <span class="blog-span">Blog</span></a><a href="/simulateur" aria-current="page" class="nav-link dropdown w--current">Simulateur d’épargne</a><a href="/briefings" class="nav-link dropdown">Briefings</a><a href="/fiches-pratiques" class="nav-link dropdown">Fiches pratiques</a><a href="/lexique" class="nav-link dropdown">Lexique</a><a href="http://help.cashbee.fr" target="_blank" class="nav-link dropdown">Centre d&#x27;aide</a><div class="spacer _10"></div><a href="/unpublished/simulateur-old" class="button secondary w-button">Faire une simulation</a><div class="button-form"><div data-w-id="ff4ba2cd-d7be-d06d-a629-9c75feef885e" class="button-form-click-zone"><div data-w-id="ff4ba2cd-d7be-d06d-a629-9c75feef885f">Essayer l’app</div><div class="form-button-close"><div>✕</div></div></div><div class="button-form-input-wrapper w-form"><form method="post" name="wf-form-Twillio-Form" data-name="Twillio Form" id="wf-form-Twillio-Form" class="button-form-div w-clearfix" data-wf-page-id="646c84e221d9bb03938c9714" data-wf-element-id="ff4ba2cd-d7be-d06d-a629-9c75feef8864"><input type="tel" class="form-input small w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Votre n° de tél." data-sms="true" id="field" required=""/><input type="submit" value="→" data-wait="Un instant" data-getlink="true" class="button-form-submit-button w-button"/></form><div class="success-message small w-form-done"><div>Un SMS arrive !</div></div><div class="error-message small w-form-fail"><div>Erreur</div></div></div></div></div><div class="badges-store-menu-bloc"><a href="https://apps.apple.com/fr/app/cashbee-l%C3%A9pargne-simple/id1438670175" class="store-badge nav w-inline-block"><img src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae45722a01bf99cdabdc7_black%404x.png" alt="Cashbee sur l&#x27;App Store" class="badge"/></a><a href="https://play.google.com/store/apps/details?id=fr.cashbee.cashbee&amp;hl=fr&amp;gl=US" class="store-badge nav w-inline-block"><img src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google.png" sizes="100vw" srcset="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google-p-500.png 500w, https://assets.website-files.com/5de92161372b4da5bdf82ef1/5eaae5afb688d32909b18a1c_badge%20google.png 1132w" alt="Cashbee sur Google Play" class="badge"/></a></div><div class="button-form-desktop-carrier"><div class="button-form"><div data-w-id="ff4ba2cd-d7be-d06d-a629-9c75feef885e" class="button-form-click-zone"><div data-w-id="ff4ba2cd-d7be-d06d-a629-9c75feef885f">Essayer l’app</div><div class="form-button-close"><div>✕</div></div></div><div class="button-form-input-wrapper w-form"><form method="post" name="wf-form-Twillio-Form" data-name="Twillio Form" id="wf-form-Twillio-Form" class="button-form-div w-clearfix" data-wf-page-id="646c84e221d9bb03938c9714" data-wf-element-id="ff4ba2cd-d7be-d06d-a629-9c75feef8864"><input type="tel" class="form-input small w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Votre n° de tél." data-sms="true" id="field" required=""/><input type="submit" value="→" data-wait="Un instant" data-getlink="true" class="button-form-submit-button w-button"/></form><div class="success-message small w-form-done"><div>Un SMS arrive !</div></div><div class="error-message small w-form-fail"><div>Erreur</div></div></div></div></div></nav><div class="menu-button w-nav-button"><div class="icon w-icon-nav-menu"></div></div></div></div><div class="section-v2 lowmargin wf-section"><h1>Simulez la performance de vos placements</h1><div class="spacer _20"></div><div x-data="helpers" id="w-node-_2d91dc3d-0b67-1fe7-a57c-630b95a73bd7-938c9714" class="simulator--form-wrapper w-form"><form id="formSimulator" name="wf-form-simulator" data-name="simulator" action="https://calendly.com/clement-tempiabonda/echange-avec-cashbee" method="get" class="simulator--form" data-wf-page-id="646c84e221d9bb03938c9714" data-wf-element-id="2d91dc3d-0b67-1fe7-a57c-630b95a73bd8"><div id="w-node-_2d91dc3d-0b67-1fe7-a57c-630b95a73bd9-938c9714" class="simulator--column"><div class="utility--island-div"><div class="utility--island-inner-stack"><div class="simulator--stack-horizontal"><label for="initial-amount" class="simulator--field-label">Si vous placez au départ</label><div class="simulator--label-container"><div id="textInitialAmount" x-text="formatCurrency($store.inputs.initialAmount)">10000 €</div></div></div><div class="w-embed"><input x-model.number="$store.inputs.initialAmount" type="range" min="1000" max="250000" step="1000" value="1000" class="slider" id="initialAmountSlider" name="initialAmount"></div></div><div class="utility--island-inner-stack"><div class="simulator--stack-horizontal"><label for="monthlyAmountField-2" class="simulator--field-label">Puis</label><div class="simulator--label-container"><div id="textMonthlyAmount" x-text="formatCurrency($store.inputs.monthlyAmount)">500 €</div></div><label for="monthlyAmountField-2" class="simulator--field-label">chaque mois</label></div><div class="w-embed"><input x-model.number="$store.inputs.monthlyAmount" type="range" min="0" max="1500" step="50" value="100" class="slider" id="monthlyAmountSlider" name="monthlyAmount"></div></div><div class="utility--island-inner-stack"><div class="simulator--stack-horizontal"><label for="duration" class="simulator--field-label">Pendant</label><div class="simulator--label-container"><div id="textDuration" x-text="`${$store.inputs.duration} ans`">8 ans</div></div></div><div class="w-embed"><input x-model.number="$store.inputs.duration" type="range" min="1" max="30" step="1" value="1" class="slider" id="durationSlider" name="duration"></div></div></div><div x-init="clickDefault($el)" x-data="productPicker(defaultMainProduct, &#x27;main&#x27;)" class="utility--island-div"><div class="utility--island-inner-stack larger"><div class="simulator--stack-horizontal"><label for="productSelect" class="simulator--field-label">Sur le placement</label><div class="simulator--label-container"><div id="textProduct" x-text="product">Livret</div></div></div><div class="simulator--product-picker-container"><div class="simulator--product-picker-wrapper w-dyn-list"><div role="list" class="simulator--product-picker-list w-dyn-items"><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff6953351e4b54eed7dca2_LCA.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#c28800" class="simulator--product-picker-item-label">Livret</div><div class="w-embed"><input type="radio" value="Livret" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #007012;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff696aae810a05f674c9ce_PIL.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#003585' class='simulator--product-picker-item-label'>Pilote Auto</div>
-                      <div class='w-embed'><input type='radio' value='Pilote Auto' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #c28800;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff695dc07f3230a2999be8_EQU.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#26008f" class="simulator--product-picker-item-label">Équilibre</div><div class="w-embed"><input type="radio" value="Équilibre" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #003585;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff69b3263b6d45e16fba5a_ALW.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#00473e' class='simulator--product-picker-item-label'>All weather</div>
-                      <div class='w-embed'><input type='radio' value='All weather' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #26008f;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff6995083fc0373b1f0403_IMO.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#007012" class="simulator--product-picker-item-label">Immobilier</div><div class="w-embed"><input type="radio" value="Immobilier" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #00473e;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff697b0b14024e360d6ceb_REL.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#5e007a' class='simulator--product-picker-item-label'>Relance</div>
-                      <div class='w-embed'><input type='radio' value='Relance' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #007012;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff696aae810a05f674c9ce_PIL.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#003585" class="simulator--product-picker-item-label">Pilote Auto</div><div class="w-embed"><input type="radio" value="Pilote Auto" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #5e007a;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff698452b7486ed2977b41_OMP.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#855000' class='simulator--product-picker-item-label'>Or et mat. prem.</div>
-                      <div class='w-embed'><input type='radio' value='Or et mat. prem.' x-model='product'
-                                                  name='mainProduct' class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #003585;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff69b3263b6d45e16fba5a_ALW.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#00473e" class="simulator--product-picker-item-label">All weather</div><div class="w-embed"><input type="radio" value="All weather" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #855000;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff698d217b9360701f813c_SAN.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#a30000' class='simulator--product-picker-item-label'>Santé</div>
-                      <div class='w-embed'><input type='radio' value='Santé' x-model='product' name='mainProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #00473e;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff697b0b14024e360d6ceb_REL.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#5e007a" class="simulator--product-picker-item-label">Relance</div><div class="w-embed"><input type="radio" value="Relance" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border-color: #a30000;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <img loading='lazy'
-                   src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/642d808c11e38ef6df6f119b_Scroll.svg'
-                   alt='' class='simulator--scroll-icon' /></div>
-          </div>
-          <div id='riskPickerGroup' x-cloak='' x-show='product === &#x27;Pilote Auto&#x27;'
-               class='utility--island-inner-stack pilote-auto'><p class='simulator--risk-picker-title'>Avec le profil de
-            risque</p>
-            <div class='simulator--risk-picker'><label class='simulator--risk-picker-item w-radio'>
-              <div
-                class='w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input'></div>
-              <input type='radio' name='mainRiskLevel' data-value='risk1' data-name='mainRiskLevel' value='risk1'
-                     x-model='piloteRiskLevel' id='risk1' style='opacity:0;position:absolute;z-index:-1' /><span
-              class='simulator--risk-picker-item-label w-form-label' for='risk1'>Défensif</span></label><label
-              class='simulator--risk-picker-item w-radio'>
-              <div
-                class='w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input'></div>
-              <input type='radio' name='mainRiskLevel' data-value='risk2' data-name='mainRiskLevel' value='risk2'
-                     x-model='piloteRiskLevel' id='risk2' style='opacity:0;position:absolute;z-index:-1' /><span
-              class='simulator--risk-picker-item-label w-form-label' for='risk2'>Prudent</span></label><label
-              class='simulator--risk-picker-item w-radio'>
-              <div
-                class='w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input'></div>
-              <input type='radio' name='mainRiskLevel' data-value='risk3' data-name='mainRiskLevel' value='risk3'
-                     x-model='piloteRiskLevel' id='risk3' style='opacity:0;position:absolute;z-index:-1' /><span
-              class='simulator--risk-picker-item-label w-form-label' for='risk3'>Équilibré</span></label><label
-              class='simulator--risk-picker-item w-radio'>
-              <div
-                class='w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input'></div>
-              <input type='radio' name='mainRiskLevel' data-value='risk4' data-name='mainRiskLevel' value='risk4'
-                     x-model='piloteRiskLevel' id='risk4' style='opacity:0;position:absolute;z-index:-1' /><span
-              class='simulator--risk-picker-item-label w-form-label' for='risk4'>Dynamique</span></label></div>
-            <div class='grey-paragraph small'>Ce profil détermine la proportion investie sur des fonds en euros (capital
-              garanti) vs. en Unités de Compte.
-            </div>
-          </div>
-        </div>
-        <div x-init='clickDefault($el)' x-data='productPicker(&#x27;Équilibre&#x27;, &#x27;second&#x27;, false)'>
-          <div x-on:click='toggleOpen()' x-show='!open' class='utility--island-div secondary'>
-            <div class='simulator--stack-horizontal'><label for='productSelect' class='simulator--field-label pointer'>Comparer
-              avec un autre placement</label>
-              <div class='spacer-flex'></div>
-              <img src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/62976bbee9aa39375bee1c55_idea.svg'
-                   loading='lazy' alt='' class='simulator--icon' /></div>
-          </div>
-          <div x-show='open' class='utility--island-div'>
-            <div class='utility--island-inner-stack larger'>
-              <div class='simulator--stack-horizontal'><label for='productSelect' class='simulator--field-label'>Comparé
-                avec</label>
-                <div class='simulator--value-div'>
-                  <div id='textProduct' x-text='product'>Livret</div>
-                </div>
-                <div class='spacer-flex'></div>
-                <img
-                  src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/5e8611c216db54601ead6b50_close_24px.svg'
-                  loading='lazy' x-on:click='toggleOpen()' alt='' class='simulator--icon' /></div>
-              <div class='simulator--product-picker-container'><img loading='lazy'
-                                                                    src='https://assets.website-files.com/5de92161372b4da5bdf82ef1/642d808c11e38ef6df6f119b_Scroll.svg'
-                                                                    alt='' class='simulator--scroll-icon' /></div>
-              <div class='simulator--product-picker-wrapper w-dyn-list'>
-                <div role='list' class='simulator--product-picker-list w-dyn-items'>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff6953351e4b54eed7dca2_LCA.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#c28800' class='simulator--product-picker-item-label'>Livret</div>
-                      <div class='w-embed'><input type='radio' value='Livret' x-model='product' name='secondProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #5e007a;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff698452b7486ed2977b41_OMP.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#855000" class="simulator--product-picker-item-label">Or et mat. prem.</div><div class="w-embed"><input type="radio" value="Or et mat. prem." x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #c28800;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff695dc07f3230a2999be8_EQU.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#26008f' class='simulator--product-picker-item-label'>Équilibre</div>
-                      <div class='w-embed'><input type='radio' value='Équilibre' x-model='product' name='secondProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #855000;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff698d217b9360701f813c_SAN.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#a30000" class="simulator--product-picker-item-label">Santé</div><div class="w-embed"><input type="radio" value="Santé" x-model="product" name="mainProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #26008f;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff6995083fc0373b1f0403_IMO.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#007012' class='simulator--product-picker-item-label'>Immobilier</div>
-                      <div class='w-embed'><input type='radio' value='Immobilier' x-model='product' name='secondProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border-color: #a30000;
+}
+</style></div></div></div></div></div><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/642d808c11e38ef6df6f119b_Scroll.svg" alt="" class="simulator--scroll-icon"/></div></div><div id="riskPickerGroup" x-cloak="" x-show="product === &#x27;Pilote Auto&#x27;" class="utility--island-inner-stack pilote-auto"><p class="simulator--risk-picker-title">Avec le profil de risque</p><div class="simulator--risk-picker"><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Défensif</div><div class="w-embed"><input type="radio" value="risk1" x-model="piloteRiskLevel" name="mainRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Prudent</div><div class="w-embed"><input type="radio" value="risk2" x-model="piloteRiskLevel" name="mainRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Équilibré</div><div class="w-embed"><input type="radio" value="risk3" x-model="piloteRiskLevel" name="mainRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Dynamique</div><div class="w-embed"><input type="radio" value="risk4" x-model="piloteRiskLevel" name="mainRiskLevel" class="simulator--radio-button-html"/></div></div></div><div class="grey-paragraph small">Ce profil détermine la proportion investie sur des fonds en euros (capital garanti) vs. en Unités de Compte. </div></div></div><div x-init="clickDefault($el)" x-data="productPicker(&#x27;Équilibre&#x27;, &#x27;second&#x27;, false)"><div x-on:click="toggleOpen()" x-show="!open" class="utility--island-div secondary"><div class="simulator--stack-horizontal"><label for="productSelect" class="simulator--field-label pointer">Comparer avec un autre placement</label><div class="spacer-flex"></div><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/62976bbee9aa39375bee1c55_idea.svg" alt="" class="simulator--icon"/></div></div><div x-show="open" class="utility--island-div"><div class="utility--island-inner-stack larger"><div class="simulator--stack-horizontal"><label for="productSelect" class="simulator--field-label">Comparé avec</label><div class="simulator--label-container"><div id="textProduct" x-text="product">Livret</div></div><div class="spacer-flex"></div><img x-on:click="toggleOpen()" loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5e8611c216db54601ead6b50_close_24px.svg" alt="" class="simulator--icon"/></div><div class="simulator--product-picker-container"><div class="simulator--product-picker-wrapper w-dyn-list"><div role="list" class="simulator--product-picker-list w-dyn-items"><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff6953351e4b54eed7dca2_LCA.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#c28800" class="simulator--product-picker-item-label">Livret</div><div class="w-embed"><input type="radio" value="Livret" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #007012;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff696aae810a05f674c9ce_PIL.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#003585' class='simulator--product-picker-item-label'>Pilote Auto</div>
-                      <div class='w-embed'><input type='radio' value='Pilote Auto' x-model='product'
-                                                  name='secondProduct' class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #c28800;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff695dc07f3230a2999be8_EQU.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#26008f" class="simulator--product-picker-item-label">Équilibre</div><div class="w-embed"><input type="radio" value="Équilibre" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #003585;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff69b3263b6d45e16fba5a_ALW.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#00473e' class='simulator--product-picker-item-label'>All weather</div>
-                      <div class='w-embed'><input type='radio' value='All weather' x-model='product'
-                                                  name='secondProduct' class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #26008f;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff6995083fc0373b1f0403_IMO.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#007012" class="simulator--product-picker-item-label">Immobilier</div><div class="w-embed"><input type="radio" value="Immobilier" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #00473e;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff697b0b14024e360d6ceb_REL.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#5e007a' class='simulator--product-picker-item-label'>Relance</div>
-                      <div class='w-embed'><input type='radio' value='Relance' x-model='product' name='secondProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #007012;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff696aae810a05f674c9ce_PIL.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#003585" class="simulator--product-picker-item-label">Pilote Auto</div><div class="w-embed"><input type="radio" value="Pilote Auto" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #5e007a;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff698452b7486ed2977b41_OMP.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#855000' class='simulator--product-picker-item-label'>Or et mat. prem.</div>
-                      <div class='w-embed'><input type='radio' value='Or et mat. prem.' x-model='product'
-                                                  name='secondProduct' class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #003585;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff69b3263b6d45e16fba5a_ALW.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#00473e" class="simulator--product-picker-item-label">All weather</div><div class="w-embed"><input type="radio" value="All weather" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-                        <style>
-                            .simulator--radio-button-html:checked {
-                                border: solid 3px #855000;
-                            }
-                        </style>
-                      </div>
-                    </div>
-                  </div>
-                  <div role='listitem' class='simulator--product-picker-col-item w-dyn-item'>
-                    <div class='simulator--product-item-v2'><img loading='lazy'
-                                                                 src='https://assets.website-files.com/5df35c93be804b317d865c00/63ff698d217b9360701f813c_SAN.svg'
-                                                                 alt='' class='simulator--product-picker-item-icon' />
-                      <div style='color:#a30000' class='simulator--product-picker-item-label'>Santé</div>
-                      <div class='w-embed'><input type='radio' value='Santé' x-model='product' name='secondProduct'
-                                                  class='simulator--radio-button-html' />
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #00473e;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff697b0b14024e360d6ceb_REL.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#5e007a" class="simulator--product-picker-item-label">Relance</div><div class="w-embed"><input type="radio" value="Relance" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
 
-  <style>
-      .simulator--radio-button-html:checked {
-          border: solid 3px #a30000;
-      }
-  </style></div></div></div></div></div></div><div id="riskPickerGroup" x-cloak="" x-show="product === &#x27;Pilote Auto&#x27;" class="utility--island-inner-stack pilote-auto"><p class="simulator--risk-picker-title">Avec le profil de risque</p><div class="simulator--risk-picker"><label class="simulator--risk-picker-item w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input"></div><input type="radio" name="secondRiskLevel" data-value="risk1" data-name="secondRiskLevel" value="risk1" x-model="piloteRiskLevel" id="risk1-2" style="opacity:0;position:absolute;z-index:-1"/><span class="simulator--risk-picker-item-label w-form-label" for="risk1-2">Défensif</span></label><label class="simulator--risk-picker-item w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input"></div><input type="radio" name="secondRiskLevel" data-value="risk2" data-name="secondRiskLevel" value="risk2" x-model="piloteRiskLevel" id="risk2-3" style="opacity:0;position:absolute;z-index:-1"/><span class="simulator--risk-picker-item-label w-form-label" for="risk2-3">Prudent</span></label><label class="simulator--risk-picker-item w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input"></div><input type="radio" name="secondRiskLevel" data-value="risk3" data-name="secondRiskLevel" value="risk3" x-model="piloteRiskLevel" id="risk3-4" style="opacity:0;position:absolute;z-index:-1"/><span class="simulator--risk-picker-item-label w-form-label" for="risk3-4">Équilibré</span></label><label class="simulator--risk-picker-item w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom simulator--risk-picker-radio w-radio-input"></div><input type="radio" name="secondRiskLevel" data-value="risk4" data-name="secondRiskLevel" value="risk4" x-model="piloteRiskLevel" id="risk4-5" style="opacity:0;position:absolute;z-index:-1"/><span class="simulator--risk-picker-item-label w-form-label" for="risk4-5">Dynamique</span></label></div><div class="grey-paragraph small">Ce profil détermine la proportion investie sur des fonds en euros (capital garanti) vs. en Unités de Compte. </div></div></div></div><div></div></div><div id="w-node-bd193cb4-6832-4467-36d1-3e253a5193a3-938c9714" class="simulator--column"><div class="simulator--utility-invisible"><h4>Field outputs control (will be hidden in production)</h4><div class="paragraph-small">initialAmountField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="InitialAmount" data-name="InitialAmount" placeholder="" id="initialAmountField" required=""/><div class="paragraph-small">monthlyAmountField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="MonthlyAmount" data-name="MonthlyAmount" placeholder="" id="monthlyAmountField" required=""/><div class="paragraph-small">durationField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="Duration" data-name="Duration" placeholder="" id="durationField" required=""/><div class="paragraph-small">productField</div><input type="text" class="simulator--field-value w-input" maxlength="256" name="ProductPicked" data-name="ProductPicked" placeholder="" id="productField" required=""/><div class="paragraph-small">resultBaseField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultBase" data-name="resultBase" placeholder="" id="resultBaseField" required=""/><div class="paragraph-small">resultBestField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultBest" data-name="resultBest" placeholder="" id="resultBestField" required=""/><div class="paragraph-small">resultWorstField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultWorst" data-name="resultWorst" placeholder="" id="resultWorstField" required=""/><div class="paragraph-small">outputCalendly</div><input type="text" class="simulator--field-value w-input" maxlength="256" name="a2" data-name="a2" placeholder="" id="outputCalendly" required=""/><div class="paragraph-small">utm_source</div><div class="hidden-fields w-embed"><input type="hidden" name="utm_source" value="website"/></div><div class="paragraph-small">utm_campaign</div><div class="hidden-fields w-embed"><input type="hidden" name="utm_campaign" value="simulateur"/></div></div><div class="utility--island-div"><label for="initial-amount" class="simulator--field-label">Vous pouvez vous attendre à...</label><div class="chart-embed w-embed"><div class="chart-container" style="position: relative">
-  <canvas id="chart"></canvas>
-</div></div><div id="investmentCards" x-show="!($store.inputs.mainProduct === &#x27;Livret&#x27; &amp;&amp; !$store.inputs.secondProduct)" class="utility--island-inner-stack"><div class="paragraph-small grey">Votre investissement devrait se situer dans cet intervalle à la fin de la durée de placement choisie.</div><div class="simulator--flow-layout"><div class="simulator--results-left"><div class="simulator--flow-label">Investi</div><div class="simulator--value-div base"><div id="textBase" x-text="formatCurrency($store.inputs.base)" class="textbase">58000</div></div></div><div class="simulator--results-flow-lines"><div class="simulator--results-line-straight"></div><div class="simulator--results-bracket"></div></div><div class="simulator--flow-right-helper"><div class="simulator--flow-helper-mobile"><div class="simulator--results-line-bottom"></div><div class="simulator--results-bracket"></div></div><div class="simulator--results-right"><div class="simulator--results-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--value-div"><div id="textBest" x-text="formatCurrency($store.inputs.mainBest.value)">XX</div></div><div class="simulator--perf-percent-flex"><div id="percentageBest">XX</div><div>% </div><div id="differenceBest" class="differencebest grey">XX€</div></div></div><div class="simulator--results-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--value-div"><div id="textBest" x-text="$store.inputs.mainWorst &amp;&amp; formatCurrency($store.inputs.mainWorst.value)">XX</div></div><div class="simulator--perf-percent-flex"><div id="percentageBest">XX</div><div>% </div><div id="differenceBest" class="differencebest grey">XX€</div></div></div></div></div><div x-show="$store.inputs.secondProduct" class="simulator--flow-right-helper"><div class="simulator--flow-helper-mobile"><div class="simulator--results-line-bottom"></div><div class="simulator--results-bracket"></div></div><div class="simulator--results-right"><div class="simulator--results-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.secondProduct], color: Colors[$store.inputs.secondProduct] }" class="simulator--value-div"><div id="textWorst" x-text="$store.inputs.secondBest &amp;&amp; formatCurrency($store.inputs.secondBest.value)" class="textworst">XX</div></div><div class="simulator--perf-percent-flex"><div id="percentageWorst">XX</div><div>% </div><div id="differenceWorst" class="differenceworst grey">XX€</div></div></div><div class="simulator--results-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.secondProduct], color: Colors[$store.inputs.secondProduct] }" class="simulator--value-div"><div id="textWorst" x-text="$store.inputs.secondWorst &amp;&amp; formatCurrency($store.inputs.secondWorst.value)" class="textworst">XX</div></div><div class="simulator--perf-percent-flex"><div id="percentageWorst">XX</div><div>% </div><div id="differenceWorst" class="differenceworst grey">XX€</div></div></div></div></div></div><div class="simulator--warning"><strong>Attention :</strong> cette simulation n’engage ni Cashbee ni ses partenaires. Ce placement présente un risque de perte en capital. Personne ne peut prévoir ses performances futures avec certitude.</div></div><div id="livretCard" x-show="$store.inputs.mainProduct === &#x27;Livret&#x27; &amp;&amp; !$store.inputs.secondProduct" class="utility--island-inner-stack larger"><div class="simulator--flow-layout"><div class="simulator--results-left"><div class="simulator--flow-label">Investi</div><div class="simulator--value-div base"><div id="textBaseLivret" x-text="formatCurrency($store.inputs.base)" class="textbase">58000</div></div></div><div class="simulator--results-flow-lines"><div class="simulator--results-line-straight"></div></div><div class="simulator--flow-right-helper"><div class="simulator--flow-helper-mobile"><div class="simulator--results-line-bottom"></div></div><div class="simulator--results-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--value-div"><div id="textLivret" x-text="formatCurrency($store.inputs.mainBest.value)" class="textbest">XX</div></div><div class="simulator--perf-percent-flex"><div id="percentageBest">XX</div><div>% </div><div id="differenceBest" class="differencebest grey">XX€</div></div></div></div></div></div></div><div class="utility--island-div action-desktop"><div class="simulator--action-div-copy"><div><h3>Vous aimez ce que vous voyez ?</h3><p>Téléchargez l’app pour investir en quelques clics, ou prenez rendez-vous avec notre expert pour construire votre projet d’épargne.</p></div><div class="app-download-badges-bloc"><a href="https://cashbee.onelink.me/ztIs/getcashbee" target="_blank" class="button nomargin w-button">Télécharger l’app</a></div><input type="submit" value="En parler avec un conseiller" data-wait="Please wait..." class="button secondary nomargin w-button"/></div><div class="simulator--flashcode-div"><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/6413451626a5b2ce2fc9a61c_QR%20Code%20Simulator.svg" alt="" class="simulator--qr-image"/><p>Flashez ce code pour télécharger l’app</p></div></div></div><div id="w-node-_007e3426-34c2-6aac-7ba3-9aaf48d43f0d-938c9714" class="utility--island-div action-mobile"><div class="simulator--action-div-copy"><div><h3>Vous aimez ce que vous voyez ?</h3><p>Téléchargez l’app pour investir en quelques clics, ou prenez rendez-vous avec notre expert pour construire votre projet d’épargne.</p></div><div class="app-download-badges-bloc"><a href="https://go.onelink.me/zSmq/gaf3chnv" target="_blank" class="button nomargin w-button">Télécharger l’app</a></div><input type="submit" value="En parler avec un conseiller" data-wait="Please wait..." class="button secondary nomargin w-button"/></div><div class="simulator--flashcode-div"><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/6413451626a5b2ce2fc9a61c_QR%20Code%20Simulator.svg" alt="" class="simulator--qr-image"/><p>Flashez ce code pour télécharger l’app</p></div></div><div id="w-node-faad9861-81c7-2dc8-c07e-8bf72287f6c9-938c9714"><div class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Pyrite 2"] = "#f0eadb";
-  window.Colors = window.Colors || {};
-  window.Colors["Pyrite 2"] = "#635221";
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #5e007a;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff698452b7486ed2977b41_OMP.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#855000" class="simulator--product-picker-item-label">Or et mat. prem.</div><div class="w-embed"><input type="radio" value="Or et mat. prem." x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
+
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #855000;
+}
+</style></div></div></div><div role="listitem" class="simulator--product-picker-col-item w-dyn-item"><div class="simulator--product-item-v2"><img loading="lazy" src="https://assets.website-files.com/5df35c93be804b317d865c00/63ff698d217b9360701f813c_SAN.svg" alt="" class="simulator--product-picker-item-icon"/><div style="color:#a30000" class="simulator--product-picker-item-label">Santé</div><div class="w-embed"><input type="radio" value="Santé" x-model="product" name="secondProduct" class="simulator--radio-button-html"/>
+
+<style>
+.simulator--radio-button-html:checked {
+  border: solid 3px #a30000;
+}
+</style></div></div></div></div></div><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/642d808c11e38ef6df6f119b_Scroll.svg" alt="" class="simulator--scroll-icon"/></div></div><div id="riskPickerGroup" x-cloak="" x-show="product === &#x27;Pilote Auto&#x27;" class="utility--island-inner-stack pilote-auto"><p class="simulator--risk-picker-title">Avec le profil de risque</p><div class="simulator--risk-picker"><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Défensif</div><div class="w-embed"><input type="radio" value="risk1" x-model="piloteRiskLevel" name="secondRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Prudent</div><div class="w-embed"><input type="radio" value="risk2" x-model="piloteRiskLevel" name="secondRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Équilibré</div><div class="w-embed"><input type="radio" value="risk3" x-model="piloteRiskLevel" name="secondRiskLevel" class="simulator--radio-button-html"/></div></div><div class="simulator--product-item-v2 risk"><div class="simulator--risk-picker-item-label">Dynamique</div><div class="w-embed"><input type="radio" value="risk4" x-model="piloteRiskLevel" name="secondRiskLevel" class="simulator--radio-button-html"/></div></div></div><div class="grey-paragraph small">Ce profil détermine la proportion investie sur des fonds en euros (capital garanti) vs. en Unités de Compte. </div></div></div></div></div><div id="w-node-_2d91dc3d-0b67-1fe7-a57c-630b95a73c52-938c9714" class="simulator--column"><div class="simulator--utility-invisible"><h4>Field outputs control (will be hidden in production)</h4><div class="paragraph-small">initialAmountField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="InitialAmount" data-name="InitialAmount" placeholder="" id="initialAmountField" required=""/><div class="paragraph-small">monthlyAmountField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="MonthlyAmount" data-name="MonthlyAmount" placeholder="" id="monthlyAmountField" required=""/><div class="paragraph-small">durationField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="Duration" data-name="Duration" placeholder="" id="durationField" required=""/><div class="paragraph-small">productField</div><input type="text" class="simulator--field-value w-input" maxlength="256" name="ProductPicked" data-name="ProductPicked" placeholder="" id="productField" required=""/><div class="paragraph-small">resultBaseField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultBase" data-name="resultBase" placeholder="" id="resultBaseField" required=""/><div class="paragraph-small">resultBestField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultBest" data-name="resultBest" placeholder="" id="resultBestField" required=""/><div class="paragraph-small">resultWorstField</div><input type="number" class="simulator--field-value w-input" maxlength="256" name="resultWorst" data-name="resultWorst" placeholder="" id="resultWorstField" required=""/><div class="paragraph-small">outputCalendly</div><input type="text" class="simulator--field-value w-input" maxlength="256" name="a2" data-name="a2" placeholder="" id="outputCalendly" required=""/><div class="paragraph-small">utm_source</div><div class="hidden-fields w-embed"><input type="hidden" name="utm_source" value="website"/></div><div class="paragraph-small">utm_campaign</div><div class="hidden-fields w-embed"><input type="hidden" name="utm_campaign" value="simulateur"/></div></div><div class="utility--island-div"><label for="initial-amount" class="simulator--field-label">Vous pouvez vous attendre à...</label><div class="chart-embed w-embed"><div class="chart-container" style="position: relative">
+	<canvas id="chart"></canvas>
+</div></div><div id="investmentCards" x-show="!($store.inputs.mainProduct === &#x27;Livret&#x27; &amp;&amp; !$store.inputs.secondProduct)" class="utility--island-inner-stack"><div class="simulator--v3-result-wrapper"><div class="simulator--v3-invested-total"><div class="text-mini">Investi</div><div class="simulator--label-container base"><div id="textBase" x-text="formatCurrency($store.inputs.base)" class="textbase">58000</div></div></div><div class="simulator--v3-result-vstack"><div class="simulator--v3-result-row"><div x-show="$store.inputs.mainProduct !== &#x27;Livret&#x27;" class="simulator--v3-result-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--v3-color-helper"></div><div><div class="text-mini">Pessimiste</div><div id="textBest" x-text="$store.inputs.mainWorst &amp;&amp; formatCurrency($store.inputs.mainWorst.value)" class="simulator-v3-result-label">XX</div><div class="simulator--v3-subresults-percent-flex"><div id="percentageBest" x-text="`${$store.inputs.mainWorst &amp;&amp; formatNumber($store.inputs.mainWorst.percent,true)}%`" x-bind:style="{ color: $store.inputs.mainWorst &amp;&amp; $store.inputs.mainWorst.percent &lt; 0 ? &#x27;var(--negativered)&#x27; : &#x27;var(--positivegreen)&#x27; }">XX</div><div id="differenceBest" x-text="$store.inputs.mainWorst &amp;&amp; formatCurrency($store.inputs.mainWorst.diff,true)" class="differencebest grey">XX€</div></div></div></div><div class="simulator--v3-result-card"><div x-bind:style="{ background: Colors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--v3-color-helper"></div><div><div class="text-mini">Optimiste</div><div id="textBest" x-text="formatCurrency($store.inputs.mainBest.value)" class="simulator-v3-result-label">XX</div><div class="simulator--v3-subresults-percent-flex"><div id="percentageBest" x-text="`${formatNumber($store.inputs.mainBest.percent,true)}%`" x-bind:style="{ color: $store.inputs.mainBest.percent &lt; 0 ? &#x27;var(--negativered)&#x27; : &#x27;var(--positivegreen)&#x27; }">XX</div><div id="differenceBest" x-text="formatCurrency($store.inputs.mainBest.diff,true)" class="differencebest grey">XX€</div></div></div></div></div><div x-show="$store.inputs.secondProduct" class="simulator--v3-result-row"><div x-show="$store.inputs.secondProduct !== &#x27;Livret&#x27;" class="simulator--v3-result-card"><div x-bind:style="{ background: BackgroundColors[$store.inputs.secondProduct], color: Colors[$store.inputs.secondProduct] }" class="simulator--v3-color-helper"></div><div><div class="text-mini">Pessimiste</div><div id="textWorst" x-text="$store.inputs.secondWorst &amp;&amp; formatCurrency($store.inputs.secondWorst.value)" class="simulator-v3-result-label">XX</div><div class="simulator--v3-subresults-percent-flex"><div id="percentageWorst" x-text="`${$store.inputs.secondWorst &amp;&amp; formatNumber($store.inputs.secondWorst.percent,true)}%`" x-bind:style="{ color: $store.inputs.secondWorst &amp;&amp; $store.inputs.secondWorst.percent &lt; 0 ? &#x27;var(--negativered)&#x27; : &#x27;var(--positivegreen)&#x27; }">XX</div><div id="differenceWorst" x-text="$store.inputs.secondWorst &amp;&amp; formatCurrency($store.inputs.secondWorst.diff,true)" class="differenceworst grey">XX€</div></div></div></div><div class="simulator--v3-result-card"><div x-bind:style="{ background: Colors[$store.inputs.secondProduct], color: Colors[$store.inputs.secondProduct] }" class="simulator--v3-color-helper"></div><div><div class="text-mini">Optimiste</div><div id="textWorst" x-text="$store.inputs.secondBest &amp;&amp; formatCurrency($store.inputs.secondBest.value)" class="simulator-v3-result-label">XX</div><div class="simulator--v3-subresults-percent-flex"><div id="percentageWorst" x-text="`${$store.inputs.secondBest &amp;&amp; formatNumber($store.inputs.secondBest.percent,true)}%`" x-bind:style="{ color: $store.inputs.secondBest &amp;&amp; $store.inputs.secondBest.percent &lt; 0 ? &#x27;var(--negativered)&#x27; : &#x27;var(--positivegreen)&#x27; }">XX</div><div id="differenceWorst" x-text="$store.inputs.secondBest &amp;&amp; formatCurrency($store.inputs.secondBest.diff,true)" class="differenceworst grey">XX€</div></div></div></div></div></div></div><div class="simulator--warning"><strong>Attention :</strong> cette simulation n’engage ni Cashbee ni ses partenaires. Ce placement présente un risque de perte en capital. Personne ne peut prévoir ses performances futures avec certitude.</div></div><div id="livretCard" x-show="$store.inputs.mainProduct === &#x27;Livret&#x27; &amp;&amp; !$store.inputs.secondProduct" class="utility--island-inner-stack larger"><div class="simulator--v3-result-wrapper"><div class="simulator--v3-invested-total"><div class="text-mini">Investi</div><div class="simulator--label-container base"><div id="textBaseLivret" x-text="formatCurrency($store.inputs.base)" class="textbase">58000</div></div></div><div class="simulator--v3-result-row"><div class="simulator--v3-result-card"><div x-bind:style="{ background: Colors[$store.inputs.mainProduct], color: Colors[$store.inputs.mainProduct] }" class="simulator--v3-color-helper"></div><div><div class="text-mini">Optimiste</div><div id="textLivret" x-text="formatCurrency($store.inputs.mainBest.value)" class="simulator-v3-result-label">XX</div><div class="simulator--v3-subresults-percent-flex"><div id="percentageBest" x-text="`${formatNumber($store.inputs.mainBest.percent,true)}%`" x-bind:style="{ color: $store.inputs.mainBest.percent &lt; 0 ? &#x27;var(--negativered)&#x27; : &#x27;var(--positivegreen)&#x27; }">XX</div><div id="differenceBest" x-text="formatCurrency($store.inputs.mainBest.diff,true)" class="differencebest grey">XX€</div></div></div></div></div></div></div></div><div class="utility--island-div action-desktop"><div class="simulator--action-div-copy"><div><h3>Vous aimez ce que vous voyez ?</h3><p>Téléchargez l’app pour investir en quelques clics, ou prenez rendez-vous avec notre expert pour construire votre projet d’épargne.</p></div><div class="app-download-badges-bloc"><a href="https://cashbee.onelink.me/ztIs/getcashbee" target="_blank" class="button nomargin w-button">Télécharger l’app</a></div><input type="submit" value="En parler avec un conseiller" data-wait="Please wait..." class="button secondary nomargin w-button"/></div><div class="simulator--flashcode-div"><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/6413451626a5b2ce2fc9a61c_QR%20Code%20Simulator.svg" alt="" class="simulator--qr-image"/><p>Flashez ce code pour télécharger l’app</p></div></div></div><div id="w-node-_2d91dc3d-0b67-1fe7-a57c-630b95a73cdb-938c9714" class="utility--island-div action-mobile"><div class="simulator--action-div-copy"><div><h3>Vous aimez ce que vous voyez ?</h3><p>Téléchargez l’app pour investir en quelques clics, ou prenez rendez-vous avec notre expert pour construire votre projet d’épargne.</p></div><div class="app-download-badges-bloc"><a href="https://go.onelink.me/zSmq/gaf3chnv" target="_blank" class="button nomargin w-button">Télécharger l’app</a></div><input type="submit" value="En parler avec un conseiller" data-wait="Please wait..." class="button secondary nomargin w-button"/></div><div class="simulator--flashcode-div"><img loading="lazy" src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/6413451626a5b2ce2fc9a61c_QR%20Code%20Simulator.svg" alt="" class="simulator--qr-image"/><p>Flashez ce code pour télécharger l’app</p></div></div></form><div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div><div class="utility-invisible"><div class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Pyrite 2"] = "#f0eadb";
+window.Colors = window.Colors || {};
+window.Colors["Pyrite 2"] = "#635221";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Target Juin 23"] = "#f8deea";
-  window.Colors = window.Colors || {};
-  window.Colors["Target Juin 23"] = "#700036";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Target Juin 23"] = "#f8deea";
+window.Colors = window.Colors || {};
+window.Colors["Target Juin 23"] = "#700036";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Onyx 2"] = "#d9d9e8";
-  window.Colors = window.Colors || {};
-  window.Colors["Onyx 2"] = "#1b1b2d";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Onyx 2"] = "#d9d9e8";
+window.Colors = window.Colors || {};
+window.Colors["Onyx 2"] = "#1b1b2d";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Pyrite 1"] = "#f0eadb";
-  window.Colors = window.Colors || {};
-  window.Colors["Pyrite 1"] = "#635221";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Pyrite 1"] = "#f0eadb";
+window.Colors = window.Colors || {};
+window.Colors["Pyrite 1"] = "#635221";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["All weather"] = "#d4f7f3";
-  window.Colors = window.Colors || {};
-  window.Colors["All weather"] = "#00473e";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["All weather"] = "#d4f7f3";
+window.Colors = window.Colors || {};
+window.Colors["All weather"] = "#00473e";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Livret"] = "#fff8d6";
-  window.Colors = window.Colors || {};
-  window.Colors["Livret"] = "#c28800";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Livret"] = "#fff8d6";
+window.Colors = window.Colors || {};
+window.Colors["Livret"] = "#c28800";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Équilibre"] = "#e3e0ff";
-  window.Colors = window.Colors || {};
-  window.Colors["Équilibre"] = "#26008f";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Équilibre"] = "#e3e0ff";
+window.Colors = window.Colors || {};
+window.Colors["Équilibre"] = "#26008f";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Pilote Auto"] = "#e0edff";
-  window.Colors = window.Colors || {};
-  window.Colors["Pilote Auto"] = "#003585";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Pilote Auto"] = "#e0edff";
+window.Colors = window.Colors || {};
+window.Colors["Pilote Auto"] = "#003585";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Relance"] = "#f6e3fc";
-  window.Colors = window.Colors || {};
-  window.Colors["Relance"] = "#5e007a";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Relance"] = "#f6e3fc";
+window.Colors = window.Colors || {};
+window.Colors["Relance"] = "#5e007a";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Or et mat. prem."] = "#fff3e0";
-  window.Colors = window.Colors || {};
-  window.Colors["Or et mat. prem."] = "#855000";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Or et mat. prem."] = "#fff3e0";
+window.Colors = window.Colors || {};
+window.Colors["Or et mat. prem."] = "#855000";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Santé"] = "#ffd6d6";
-  window.Colors = window.Colors || {};
-  window.Colors["Santé"] = "#a30000";
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Santé"] = "#ffd6d6";
+window.Colors = window.Colors || {};
+window.Colors["Santé"] = "#a30000";
 </script></div></div><div role="listitem" class="w-dyn-item"><div class="w-embed w-script"><script>
-  window.BackgroundColors = window.BackgroundColors || {};
-  window.BackgroundColors["Immobilier"] = "#ccffd4";
-  window.Colors = window.Colors || {};
-  window.Colors["Immobilier"] = "#007012";
-</script></div></div></div></div></div></form><div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div><div class="utility-invisible v2"><div class="simulator--slider-styles visible w-embed"><style>
+window.BackgroundColors = window.BackgroundColors || {};
+window.BackgroundColors["Immobilier"] = "#ccffd4";
+window.Colors = window.Colors || {};
+window.Colors["Immobilier"] = "#007012";
+</script></div></div></div></div><div class="simulator--slider-styles w-embed"><style>
+:root {
+	--negativered: #A30000;
+  --positivegreen: #007012;
+}
 
-    .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #111;
-        cursor: pointer;
-    }
 
-    .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 6px;
-        border-radius: 10px;
-        background: #dfdfe2;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-    }
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #111;
+  cursor: pointer;
+}
 
-    .simulator--radio-button-html {
-        appearance: none;
-        width: 1.15em;
-        border-radius: 4px;
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        width: auto;
-        display: flex;
-        background-color: transparent;
-        border: solid 3px transparent;
-        z-index: 1;
-        cursor: pointer;
-    }
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  background: #dfdfe2;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
 
-    [x-cloak]{display:none!important}
+.simulator--radio-button-html {
+    border: none !important;
+    appearance: none;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+}
 
-</style></div></div></div><div class="section-v2 footer wf-section"><div class="w-layout-grid grid-v2"><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ebc-aa4b4eba" class="footer--column-div"><h3>Nos placements</h3><a href="/livret-cashbee" class="nav-link footer">Livret</a><a href="/cashbee-plus" class="nav-link footer">Pilote auto</a><a href="/equilibre" class="nav-link footer">Équilibre</a><a href="/collections" class="nav-link footer">Collections</a><a href="/produits-structures" class="nav-link footer">Produits structurés</a><div class="separator"></div><a href="/cashbee-pro" class="nav-link footer">Cashbee Pro</a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ec8-aa4b4eba"><a href="/" class="footer-logo-link w-inline-block"><img src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5de937c51db32aaf9bd95427_Cashbee.svg" loading="lazy" alt="Logo Cashbee"/></a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ed8-aa4b4eba" class="footer--column-div"><h3>En savoir plus</h3><a href="/a-propos" class="nav-link footer">À propos</a><a href="/securite" class="nav-link footer">Sécurité</a><a href="https://www.welcometothejungle.com/fr/companies/cashbee/jobs" target="_blank" class="nav-link footer">Carrières</a><a href="/espace-presse" class="nav-link footer">Espace presse</a><a href="https://help.cashbee.fr/" target="_blank" class="nav-link footer">Centre d’aide</a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ec9-aa4b4eba" class="footer--column-div"><h3>Ressources</h3><div class="link-div-padding"><a href="/the-interest" class="nav-link footer the-interest">The Interest <span class="blog-span">Blog</span></a></div><a href="/simulateur" class="nav-link footer"><span class="span-new">New</span> Simulateur d’épargne</a><a href="/comparatif" class="nav-link footer">Comparer nos placements</a><a href="/fiches-pratiques" class="nav-link footer">Fiches pratiques</a><a href="/lexique" class="nav-link footer">Lexique de l’épargne</a><a href="/briefings" class="nav-link footer">Briefings</a></div></div><div class="spacer _40"></div><div><p class="paragraph-small _60">Cashbee SAS au capital de 93 390€. Siret : 838801058 enregistré au RCS de Paris. Établissement agréé par l’ACPR Banque de France (REGAFI 77488) dans le cadre de ses activités de paiement et d’agrégation de compte et enregistré à l’ORIAS (N° 19002094) en tant que courtier en assurances et courtier en opérations de banque et services de paiement. <br/></p><p class="paragraph-small _60">Cashbee est également Conseiller en Investissement Financier et adhérent à l’Association Nationale des Conseillers Financiers, (ANACOFI) sous le numéro E010118.<br/></p></div><div class="footer-link-div"><a href="/legal/politique-de-confidentialite" class="nav-link footer grey">Politique de confidentialité</a><a href="/legal/cgu" class="nav-link footer grey">Conditions d&#x27;utilisation</a><a href="/legal/mentions-legales" class="nav-link footer grey">Mentions légales</a><a href="/legal/colophon" class="nav-link footer grey">Colophon</a></div><div><p class="paragraph-small _60">Document marketing à caractère non contractuel. L’ensemble des visuels sur ce site sont fournis à titre d’exemple.<br/><strong>L’investissement sur des supports en unités de compte comporte un risque de perte en capital. <br/></strong><strong>Les performances passées ne préjugent pas des performances futures et ne sont pas constantes dans le temps.</strong></p></div></div><div class="embedcalculator w-embed w-script"><script type="module" src="./src/main.js" crossorigin defer>
-</script></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5de92161372b4da5bdf82ef1" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/js/cshb.c636f398b.js" type="text/javascript"></script></body></html>
-<link rel="stylesheet" href="./src/style.css"></link>
+.simulator--product-picker-item-icon, .simulator--product-picker-item-label, .simulator--risk-picker-item-label {
+    z-index: 10;
+    pointer-events: none;
+}
+
+.simulator--product-item-v2 input:checked::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-color: #fff;
+    border: 0 rgba(56, 152, 236, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+[x-cloak]{display:none!important}
+
+
+
+</style></div></div></div><div class="section-v2 footer wf-section"><div class="w-layout-grid grid-v2"><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ebc-aa4b4eba" class="footer--column-div"><h3>Nos placements</h3><a href="/livret-cashbee" class="nav-link footer">Livret</a><a href="/cashbee-plus" class="nav-link footer">Pilote auto</a><a href="/equilibre" class="nav-link footer">Équilibre</a><a href="/collections" class="nav-link footer">Collections</a><a href="/produits-structures" class="nav-link footer">Produits structurés</a><div class="separator"></div><a href="/cashbee-pro" class="nav-link footer">Cashbee Pro</a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ec8-aa4b4eba"><a href="/" class="footer-logo-link w-inline-block"><img src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/5de937c51db32aaf9bd95427_Cashbee.svg" loading="lazy" alt="Logo Cashbee"/></a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ed8-aa4b4eba" class="footer--column-div"><h3>En savoir plus</h3><a href="/a-propos" class="nav-link footer">À propos</a><a href="/securite" class="nav-link footer">Sécurité</a><a href="https://www.welcometothejungle.com/fr/companies/cashbee/jobs" target="_blank" class="nav-link footer">Carrières</a><a href="/espace-presse" class="nav-link footer">Espace presse</a><a href="https://help.cashbee.fr/" target="_blank" class="nav-link footer">Centre d’aide</a></div><div id="w-node-_928f1e22-9dea-fc91-131f-2c3eaa4b4ec9-aa4b4eba" class="footer--column-div"><h3>Ressources</h3><div class="link-div-padding"><a href="/the-interest" class="nav-link footer the-interest">The Interest <span class="blog-span">Blog</span></a></div><a href="/simulateur" aria-current="page" class="nav-link footer w--current"><span class="span-new">New</span> Simulateur d’épargne</a><a href="/comparatif" class="nav-link footer">Comparer nos placements</a><a href="/fiches-pratiques" class="nav-link footer">Fiches pratiques</a><a href="/lexique" class="nav-link footer">Lexique de l’épargne</a><a href="/briefings" class="nav-link footer">Briefings</a></div></div><div class="spacer _40"></div><div><p class="paragraph-small _60">Cashbee SAS au capital de 93 390€. Siret : 838801058 enregistré au RCS de Paris. Établissement agréé par l’ACPR Banque de France (REGAFI 77488) dans le cadre de ses activités de paiement et d’agrégation de compte et enregistré à l’ORIAS (N° 19002094) en tant que courtier en assurances et courtier en opérations de banque et services de paiement. <br/></p><p class="paragraph-small _60">Cashbee est également Conseiller en Investissement Financier et adhérent à l’Association Nationale des Conseillers Financiers, (ANACOFI) sous le numéro E010118.<br/></p></div><div class="footer-link-div"><a href="/legal/politique-de-confidentialite" class="nav-link footer grey">Politique de confidentialité</a><a href="/legal/cgu" class="nav-link footer grey">Conditions d&#x27;utilisation</a><a href="/legal/mentions-legales" class="nav-link footer grey">Mentions légales</a><a href="/legal/colophon" class="nav-link footer grey">Colophon</a></div><div><p class="paragraph-small _60">Document marketing à caractère non contractuel. L’ensemble des visuels sur ce site sont fournis à titre d’exemple.<br/><strong>L’investissement sur des supports en unités de compte comporte un risque de perte en capital. <br/></strong><strong>Les performances passées ne préjugent pas des performances futures et ne sont pas constantes dans le temps.</strong></p></div></div><div class="embedcalculator w-embed w-script"><script type="module" src="./src/main.js" crossorigin defer>
+</script></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5de92161372b4da5bdf82ef1" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://assets.website-files.com/5de92161372b4da5bdf82ef1/js/cshb.7711f6f4a.js" type="text/javascript"></script></body></html>
